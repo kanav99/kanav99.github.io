@@ -1,13 +1,13 @@
-title: Vaibhav (@vrongmeal)
-name: Vaibhav
+title: Kanav Gupta
+name: Kanav
 tagline: Software Developer
-username: vrongmeal
-email: vrongmeal@gmail.com
+username: kanav99
+email: kanav0610@gmail.com
 description: >-
-  About, Blog and Projects of Vaibhav, a.k.a., @vrongmeal
+  About, Blog and Projects of Kanav
 
 baseurl: ""
-url: "//vrongmeal.co"
+url: "//kgupta.in"
 
 markdown: kramdown
 kramdown:
