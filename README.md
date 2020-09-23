@@ -1,9 +1,11 @@
-# Vaibhav (@vrongmeal)
+# Portfolio
 
-> About, Blog and Projects of Vaibhav, a.k.a., @vrongmeal
+> About, Blog and Projects of Kanav
 
 This website can also be used as a template repository for a [Jekyll](https://jekyllrb.com/)
 blog/portfolio.
+
+Shamelessly stolen from @vrongmeal.
 
 ## Building
 
