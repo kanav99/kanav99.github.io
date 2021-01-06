@@ -7,7 +7,7 @@ description: >-
   About, Blog and Projects of Kanav
 
 baseurl: ""
-url: "//kgupta.in"
+url: "//kanavgupta.xyz"
 
 markdown: kramdown
 kramdown:
