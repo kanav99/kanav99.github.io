@@ -5,7 +5,7 @@
 
   <title>
     
-      Projects | Kanav Gupta
+      Watchdog | Kanav Gupta
     
   </title>
 
@@ -233,24 +233,222 @@
   <main>
 
     <h1>
-      Projects
+      Watchdog
       
     </h1>
 
+    <blockquote>Lightweight server access management system</blockquote>
+
+<p><a href="https://github.com/sdslabs/watchdog/blob/master/LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" /></a></p>
+
+<p>Watchdog is a personalised server access management tool (and a slack bot) which keeps a track of all the administrative rights attempts (like sudo and su) on server (via SSH) and allows/disallows log-in attempts based on public key of user and logs all activity in form of slack message. It provides easy granting/revoking access to servers to team members through pull requests on a keyhouse repository.</p>
+
+<p>Check out this blog post to know how watchdog works and design methodologies behind it: https://blog.sdslabs.co/2020/04/watchdog</p>
+      <h2 id="contents">
+        
+        
+          Contents <a href="#contents" class="anchor-heading">#</a>
+        
+        
+      </h2>
     
 
+<ul>
+  <li><a href="#features">Features</a></li>
+  <li><a href="#dependencies">Dependencies</a></li>
+  <li><a href="#installation">Installation</a></li>
+  <li><a href="#usage">Usage</a></li>
+  <li><a href="#development">Development</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
+      <h2 id="features">
+        
+        
+          Features <a href="#features" class="anchor-heading">#</a>
+        
+        
+      </h2>
+    
 
-  <div>
-    <h3 class="project-title">
-      <a href="/projects/watchdog.html">
-        Watchdog
-      </a>
-    </h3>
-    <p>Lightweight server access management system</p>
-  </div>
+<ul>
+  <li>Request SSH access to a server just by creating a PR to the Keyhouse repository.</li>
+  <li>Stateless and serverless. Watchdog runs on a single binary.</li>
+  <li>Optional server activity logs to your favourite workspace like Slack or Discord.</li>
+  <li>Easy Installation and Configuration</li>
+  <li>Get notified when someone escalates privileges or performs administrative tasks using <code class="language-plaintext highlighter-rouge">sudo</code> or <code class="language-plaintext highlighter-rouge">su</code></li>
+</ul>
+      <h2 id="dependencies">
+        
+        
+          Dependencies <a href="#dependencies" class="anchor-heading">#</a>
+        
+        
+      </h2>
+    
+
+<p>The following softwares are required for running Watchdog:-</p>
+
+<ul>
+  <li>PAM</li>
+  <li>OpenSSH server</li>
+</ul>
+      <h2 id="installation">
+        
+        
+          Installation <a href="#installation" class="anchor-heading">#</a>
+        
+        
+      </h2>
+    
+
+<ol>
+  <li>
+    <p>Create a Keyhouse Repository using the template repository <a href="https://github.com/sdslabs/keyhouse-template">here</a>.</p>
+  </li>
+  <li>
+    <p>Clone the watchdog repository</p>
+
+    <p><code class="language-plaintext highlighter-rouge">git clone https://github.com/sdslabs/watchdog.git</code></p>
+  </li>
+  <li>
+    <p>Change into the repository directory and build the latest binaries using Cargo</p>
+
+    <p><code class="language-plaintext highlighter-rouge">cargo build --release</code></p>
+  </li>
+  <li>
+    <p>Copy <code class="language-plaintext highlighter-rouge">sample.config.toml</code> to <code class="language-plaintext highlighter-rouge">config.toml</code> and make changes to the config this way:</p>
+
+    <div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c"># Hostname of the machine running watchdog. Note that this should be</span>
+ <span class="c"># same as the file you create in the `hosts` directory in keyhouse.</span>
+ <span class="py">hostname</span> <span class="p">=</span> <span class="s">'virtual-machine'</span>
+
+ <span class="c"># Keyhouse repository configuration</span>
+ <span class="nn">[keyhouse]</span>
+
+ <span class="c"># URL of the Keyhouse repository, it should be of the format</span>
+ <span class="c"># `https://api.github.com/repos/&lt;ORGANIZATION&gt;/&lt;KEYHOUSE-REPOSITORY&gt;/contents`</span>
+ <span class="py">base_url</span> <span class="p">=</span> <span class="s">'https://api.github.com/repos/sdslabs/keyhouse-template/contents'</span>
+
+ <span class="c"># This should be a personal access token made by a member of organization on his/her</span>
+ <span class="c"># behalf who can read the Keyhouse repository. Go to this</span>
+ <span class="c"># https://github.com/settings/tokens/new?description=Keyhouse%20Token&amp;scopes=repo</span>
+ <span class="c"># to make a new token with correct scopes.</span>
+ <span class="py">token</span> <span class="p">=</span> <span class="s">'secret_token'</span>
+
+ <span class="c"># Webhook APIs corresponding to various notifiers</span>
+ <span class="nn">[notifiers]</span>
+
+ <span class="c"># Make an incoming hook to your Slack workspace from this</span>
+ <span class="c"># app(https://slack.com/apps/A0F7XDUAZ-incoming-webhooks)</span>
+ <span class="c"># and paste the hook URL here. You can customize the icon and name as you like.</span>
+ <span class="py">slack</span> <span class="p">=</span> <span class="s">'https://hooks.slack.com/services/ABCDEFGHI/ABCDEFGHI/abcdefghijklmnopqrstuvwx'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Once you are done configuring, run this command with root(sudo) privileges</p>
+
+    <p><code class="language-plaintext highlighter-rouge">cd install &amp;&amp; sudo ./install.sh</code></p>
+  </li>
+  <li>
+    <p>Add <code class="language-plaintext highlighter-rouge">/opt/watchdog/bin</code> to your PATH variable.</p>
+  </li>
+</ol>
+      <h2 id="usage">
+        
+        
+          Usage <a href="#usage" class="anchor-heading">#</a>
+        
+        
+      </h2>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ watchdog --help
+
+Watchdog 0.1.0
+SDSLabs &lt;contact@sdslabs.co&gt;
+Simple server access management system on a binary
+
+USAGE:
+    watchdog [SUBCOMMAND]
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+SUBCOMMANDS:
+    auth      Authorizes users based on from keyhouse repository. This command is passed through
+              `AuthorizedKeysCommand` in sshd_config.
+    config    Get or set Watchdog configuration
+    help      Prints this message or the help of the given subcommand(s)
+    logs      Get the global watchdog logs
+    ssh       Handles the PAM SSH calls by pam_exec for Watchdog
+    su        Handles the PAM su calls by pam_exec for Watchdog
+    sudo      Handles the PAM sudo calls by pam_exec for Watchdog
+</code></pre></div></div>
+
+<p>Though most of the commands are for internal use of PAM, you can edit configuration of Watchdog any time</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>watchdog config <span class="nt">--help</span>
+</code></pre></div></div>
+
+<p><em>NOTE:</em> config can be fetched/edited only with <code class="language-plaintext highlighter-rouge">root</code> (<code class="language-plaintext highlighter-rouge">sudo</code>) access.</p>
+
+<p>To view logs</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>watchdog logs <span class="nt">--help</span>
+</code></pre></div></div>
+      <h2 id="development">
+        
+        
+          Development <a href="#development" class="anchor-heading">#</a>
+        
+        
+      </h2>
+    
+
+<p>You need to have <a href="https://www.rust-lang.org/tools/install">Rust</a> installed along with the mentioned <a href="#dependencies">dependencies</a></p>
+
+<p>Open your favourite terminal and perform the following tasks:-</p>
+
+<ol>
+  <li>Clone this repository.</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone https://github.com/sdslabs/watchdog
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Make the required changes inside the source code directory (<a href="src/">src/</a>)</p>
+  </li>
+  <li>
+    <p>Run <code class="language-plaintext highlighter-rouge">cargo test</code> to test your changes.</p>
+  </li>
+  <li>
+    <p>Rebuild the binary using <code class="language-plaintext highlighter-rouge">cargo build</code> command.</p>
+  </li>
+</ol>
+      <h2 id="contact">
+        
+        
+          Contact <a href="#contact" class="anchor-heading">#</a>
+        
+        
+      </h2>
+    
+
+<p>If you have a query regarding the product or just want to say hello then feel free to visit
+<a href="http://chat.sdslabs.co/">chat.sdslabs.co</a> or drop a mail at <a href="mailto:contact@sdslabs.co.in">contact@sdslabs.co.in</a></p>
 
 
-
+<script src="https://utteranc.es/client.js"
+    repo="vrongmeal/vrongmeal.github.io"
+    issue-term="title"
+    label="comment"
+    theme="preferred-color-scheme"
+    crossorigin="anonymous"
+    async>
+</script>
 
 
   </main>
