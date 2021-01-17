@@ -5,7 +5,7 @@
 
   <title>
     
-      About | Kanav Gupta
+      Darwin Subsystem for Linux | Kanav Gupta
     
   </title>
 
@@ -233,21 +233,46 @@
   <main>
 
     <h1>
-      About
+      Darwin Subsystem for Linux
       
     </h1>
 
-    <p>I am Kanav. I am a final year computer science undergraduate at IIT Roorkee. I like all things retro and hacking into things. I love solving challenging problems. I am a developer at <a href="https://sdslabs.co">SDSLabs</a>, a group of enthusiastic students who constantly try to deliver some really great apps. I also participate in CTFs on behalf of the group.</p>
+    <blockquote>Run Ubuntu easily on macOS (Big Sur compatible) </blockquote>
 
-<p><img src="/static/assets/about.jpg" alt="just me taking a selfie, a rare sighting" style="width:70%" /></p>
+<p align="center"><img src="https://i.imgur.com/xHDyG8t.png" width="70%" /></p>
 
-<p>I hail from New Delhi, currently living here due to quarantine. I did my studies from Kendriya Vidyalaya, first Koliwada then AGCR. My father got me a computer at a very young age and have been playing around with it since then.</p>
+<p>Not actually a subsystem like WSL, but runs an Ubuntu 16 VM on a hypervisor (<a href="https://github.com/machyve/xhyve">xhyve</a> or <a href="https://github.com/moby/hyperkit">hyperkit</a>) and adds a nice frontend to manage the VM.
+Goal is to make running Ubuntu or any flavour of linux as seamless as possible using existing technologies.</p>
+      <h2 id="installation">
+        
+        
+          Installation <a href="#installation" class="anchor-heading">#</a>
+        
+        
+      </h2>
+    
 
-<p><img src="/static/assets/ust.jpg" alt="me and my homies winning UST d3code hackathon" style="width:70%" /></p>
+<p>Head over to <a href="https://github.com/sdslabs/DSL/releases">releases page</a> to download the latest version of Ubuntu.dmg and move the App to Applications folder. On the first run, it will make you download a base image, which is 3 Gb in size. You can later make and attach other disks to the VM. Login via SSH using username <code class="language-plaintext highlighter-rouge">default</code> and password <code class="language-plaintext highlighter-rouge">password</code>.</p>
+      <h2 id="licensing">
+        
+        
+          Licensing <a href="#licensing" class="anchor-heading">#</a>
+        
+        
+      </h2>
+    
 
-<h3 id="hiring">Hiring</h3>
+<p>We do not own the Ubuntu image - the hosted base image is derived from Ubuntu Server 16.04.5 and Canonical Ltd. is the rightful owner of Ubuntu. Please open an <a href="https://github.com/sdslabs/DSL/issues">issue</a> if this needs a proper licensing.</p>
 
-<p>Now that I am grown up adult, I am actively looking for jobs. I am looking for a role that involves a dash of information security in them. Potential hirers - checkout my resume and hit me up if my profile interests you.</p>
+
+<script src="https://utteranc.es/client.js"
+    repo="vrongmeal/vrongmeal.github.io"
+    issue-term="title"
+    label="comment"
+    theme="preferred-color-scheme"
+    crossorigin="anonymous"
+    async>
+</script>
 
 
   </main>
