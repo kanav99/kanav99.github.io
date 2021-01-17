@@ -5,7 +5,7 @@
 
   <title>
     
-      Blog | Kanav Gupta
+      Authentication in Cocoa (macOS) Applications | Kanav Gupta
     
   </title>
 
@@ -233,29 +233,98 @@
   <main>
 
     <h1>
-      Blog
+      Authentication in Cocoa (macOS) Applications
       
     </h1>
 
-    
+    <p class="blog-post-date">Posted on 17 Jan 2021</p>
+
+<p>Running privilidged code is impossible in app sandbox. But sometimes, you need administrative or <code class="language-plaintext highlighter-rouge">sudo</code> privilidges to perform certain tasks. For instance, vmnet.framework needs either <code class="language-plaintext highlighter-rouge">sudo</code> privilidges or proper signing (for which you need Apple’s <a href="https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_vm_networking">blessing</a>) to work. Unfortunately, Swift (as of 17 Jan 2021) doesn’t provide any API to get administrative privilidges for a non sandboxed app. Luckily, Swift has a really great interop with C, C++ and especially Objective-C. So, We will use good old Objective-C to request such privilidges.</p>
+
+<p><img src="/static/blog/swift-auth.png" alt="" style="width:60%" /></p>
+
+<ol>
+  <li>
+    <p>From XCode’s new file menu, create a new Objective-C file.</p>
+
+    <p><img src="/static/blog/xcode-addfile.png" alt="" style="width:80%" /></p>
+  </li>
+  <li>
+    <p>It will ask if you want to create a bridging header, create one. This will add two files - one is an Objective-C file (<code class="language-plaintext highlighter-rouge">.m</code> extension) and the other one is the bridging header (<code class="language-plaintext highlighter-rouge">.h</code> extension). This file acts as the point of communication between Swift and Objective-C (or C/C++). If you want to make a function from C available in Swift, you need to add their declaration to this header.</p>
+
+    <p><img src="/static/blog/xcode-bridge.png" alt="" style="width:80%" /></p>
+  </li>
+  <li>
+    <p>We now implement the function which calls a command, but with sudo privilidges. This function is inspired/taken from this <a href="https://github.com/michaelvobrien/OSXSimpleAuth/wiki">wiki</a>.</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="cp">#import &lt;Foundation/Foundation.h&gt;
+</span>
+ <span class="kt">int</span> <span class="nf">auth</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="n">command</span><span class="p">,</span> <span class="n">NSMutableArray</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">NSPipe</span> <span class="o">*</span><span class="n">outputBuf</span><span class="p">)</span> <span class="p">{</span>
+     <span class="err">@</span><span class="n">autoreleasepool</span> <span class="p">{</span>
+         <span class="c1">// Create authorization reference</span>
+         <span class="n">AuthorizationRef</span> <span class="n">authorizationRef</span><span class="p">;</span>
+         <span class="n">OSStatus</span> <span class="n">status</span><span class="p">;</span>
+         <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">numArgs</span> <span class="o">=</span> <span class="p">[</span><span class="n">args</span> <span class="n">count</span><span class="p">];</span>
+         <span class="n">NSFileHandle</span> <span class="o">*</span><span class="n">writer</span> <span class="o">=</span> <span class="p">[</span><span class="n">outputBuf</span> <span class="n">fileHandleForWriting</span><span class="p">];</span>
+	        
+         <span class="n">status</span> <span class="o">=</span> <span class="n">AuthorizationCreate</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">kAuthorizationEmptyEnvironment</span><span class="p">,</span> <span class="n">kAuthorizationFlagDefaults</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">authorizationRef</span><span class="p">);</span>
+	        
+         <span class="c1">// Run the tool using the authorization reference</span>
+         <span class="kt">char</span> <span class="o">*</span><span class="n">argList</span><span class="p">[</span><span class="n">numArgs</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numArgs</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+             <span class="n">argList</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="n">UTF8String</span><span class="p">];</span>
+         <span class="p">}</span>
+         <span class="n">argList</span><span class="p">[</span><span class="n">numArgs</span><span class="p">]</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+         <span class="kt">FILE</span> <span class="o">*</span><span class="n">pipe</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+
+         <span class="n">status</span> <span class="o">=</span> <span class="n">AuthorizationExecuteWithPrivileges</span><span class="p">(</span><span class="n">authorizationRef</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)[</span><span class="n">command</span> <span class="n">UTF8String</span><span class="p">],</span> <span class="n">kAuthorizationFlagDefaults</span><span class="p">,</span> <span class="n">argList</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pipe</span><span class="p">);</span>
+
+         <span class="c1">// Print to standard output</span>
+         <span class="kt">char</span> <span class="n">readBuffer</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="n">errAuthorizationSuccess</span><span class="p">)</span> <span class="p">{</span>
+             <span class="k">for</span> <span class="p">(;;)</span> <span class="p">{</span>
+                 <span class="kt">ssize_t</span> <span class="n">bytesRead</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">fileno</span><span class="p">(</span><span class="n">pipe</span><span class="p">),</span> <span class="n">readBuffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">readBuffer</span><span class="p">));</span>
+                 <span class="k">if</span> <span class="p">(</span><span class="n">bytesRead</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+                 <span class="p">[</span><span class="n">writer</span> <span class="n">writeData</span><span class="o">:</span> <span class="p">[</span><span class="n">NSData</span> <span class="n">dataWithBytes</span><span class="o">:</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">readBuffer</span> <span class="n">length</span><span class="o">:</span> <span class="n">bytesRead</span><span class="p">]];</span>
+             <span class="p">}</span>
+         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+             <span class="n">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s">"Authorization Result Code: %d"</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>Note that instead of standard C strings, we have used <code class="language-plaintext highlighter-rouge">NSString *</code>, because this is the type which Swift recognizes as string. Same is the case of arrays where we have used <code class="language-plaintext highlighter-rouge">NSMutableArray</code>.</p>
+  </li>
+  <li>
+    <p>Add the function’s declaration in the bridging header.</p>
+
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#import &lt;Foundation/Foundation.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">auth</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="n">command</span><span class="p">,</span> <span class="n">NSMutableArray</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">NSPipe</span> <span class="o">*</span><span class="n">outputBuf</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>You can now call this function inside your swift files.</p>
+
+    <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">output</span> <span class="o">=</span> <span class="kt">Pipe</span><span class="p">()</span>
+<span class="nf">auth</span><span class="p">(</span><span class="s">"/full/path/to/executable"</span><span class="p">,</span> <span class="p">[</span><span class="s">"-v"</span><span class="p">],</span> <span class="n">output</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p><em>Protip</em>: The object <code class="language-plaintext highlighter-rouge">AuthorizationRef authorizationRef</code> can be saved as a global object and reused to make the application not ask for password everytime you want to run a privilidged command.</p>
 
 
-  <p>
-    <a
-      href="/blog/cocoa-authentication.html"
-      ><strong>Authentication in Cocoa (macOS) Applications</strong></a>
-    <span class="blog-post-date blog-list-date">17 Jan 2021</span>
-  </p>
-
-  <p>
-    <a
-      href="/blog/codeql.html"
-      ><strong>GitHub CTF CodeQL and Chill</strong></a>
-    <span class="blog-post-date blog-list-date">25 Jun 2020</span>
-  </p>
-
-
-
+<script src="https://utteranc.es/client.js"
+    repo="vrongmeal/vrongmeal.github.io"
+    issue-term="title"
+    label="comment"
+    theme="preferred-color-scheme"
+    crossorigin="anonymous"
+    async>
+</script>
 
 
   </main>
