@@ -1,3 +1,6 @@
-- title: Resume
-  url: "/static/assets/resume.pdf"
+- title: Obtuse Lattice Bases 
+  url: "https://arxiv.org/pdf/2009.00384.pdf"
+  date: "2020-09-01T15:17:46.312Z"
+- title: CTF Crypto Lecture Slides
+  url: "/static/docs/ctfcrypto.pdf"
   date: "2021-09-07T15:17:46.312Z"

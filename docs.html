@@ -14,7 +14,7 @@ permalink: /docs/
 {% for doc in site.data.docs reversed %}
   <p>
     <a
-      href="{{ doc.url | prepend: site.baseurl | replace: '//', '/' }}"
+      href="{{ doc.url }}"
       ><strong>{{ doc.title }}</strong></a>
     <span class="blog-post-date blog-list-date">{{ doc.date | date_to_string }}</span>
   </p>
