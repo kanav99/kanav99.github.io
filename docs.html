@@ -1,0 +1,23 @@
+---
+layout: page
+title: Docs
+permalink: /docs/
+
+---
+
+{% if site.data.docs.size == 0 %}
+  <p>
+    <em>There are no docs to show right now</em>
+  </p>
+{% else %}
+
+{% for doc in site.data.docs reversed %}
+  <p>
+    <a
+      href="{{ doc.url | prepend: site.baseurl | replace: '//', '/' }}"
+      ><strong>{{ doc.title }}</strong></a>
+    <span class="blog-post-date blog-list-date">{{ doc.date | date_to_string }}</span>
+  </p>
+{% endfor %}
+
+{% endif %}

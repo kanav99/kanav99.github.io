@@ -4,6 +4,8 @@
   href: "/projects/"
 - title: Blog
   href: "/blog/"
+- title: Docs
+  href: "/docs/"
 - title: Resume
   href: "/static/assets/resume.pdf"
   target: _blank
