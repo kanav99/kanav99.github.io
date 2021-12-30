@@ -5,7 +5,7 @@
 
   <title>
     
-      Blog | Kanav Gupta
+      Killing headers from C - Part 1 | Kanav Gupta
     
   </title>
 
@@ -242,43 +242,34 @@
   <main>
 
     <h1>
-      Blog
+      Killing headers from C - Part 1
       
     </h1>
 
-    
+    <p class="blog-post-date">Posted on 30 Dec 2021</p>
+
+<p>I love C. More than any compiled languages. It feels natural for Linux and ELF binaries. One thing I don’t like about C, and don’t know why this problem is existant in C++, is header files. Build systems of Rust and Go propose a good model for projects. Just a <code class="language-plaintext highlighter-rouge">pub</code> makes a function/variable public to outer world.</p>
+
+<p>But I don’t want to mess with GCC. So here is what I propose - autogenerate header files from <code class="language-plaintext highlighter-rouge">.c</code> files. A new keyword <code class="language-plaintext highlighter-rouge">pub</code> moves a function/variable/struct declaration to the header file. The WIP project is available at <a href="https://github.com/kanav99/cbuild">kanav99/cbuild</a>.</p>
+
+<p>Currently I am working/have implemented only limited features.</p>
+<ul>
+  <li>No macros other than <code class="language-plaintext highlighter-rouge">#include</code></li>
+  <li>No function declarations in <code class="language-plaintext highlighter-rouge">.c</code> files.</li>
+  <li>Everything is public</li>
+</ul>
+
+<p>Hope this doesn’t become my Yet Another Side Project.</p>
 
 
-  <p>
-    <a
-      href="/blog/cbuild1.html"
-      ><strong>Killing headers from C - Part 1</strong></a>
-    <span class="blog-post-date blog-list-date">30 Dec 2021</span>
-  </p>
-
-  <p>
-    <a
-      href="/blog/sage.html"
-      ><strong>Sage Math notes for CTF Crypto</strong></a>
-    <span class="blog-post-date blog-list-date">07 Nov 2021</span>
-  </p>
-
-  <p>
-    <a
-      href="/blog/cocoa-authentication.html"
-      ><strong>Authentication in Cocoa (macOS) Applications</strong></a>
-    <span class="blog-post-date blog-list-date">17 Jan 2021</span>
-  </p>
-
-  <p>
-    <a
-      href="/blog/codeql.html"
-      ><strong>GitHub CTF CodeQL and Chill</strong></a>
-    <span class="blog-post-date blog-list-date">25 Jun 2020</span>
-  </p>
-
-
-
+<script src="https://utteranc.es/client.js"
+    repo="vrongmeal/vrongmeal.github.io"
+    issue-term="title"
+    label="comment"
+    theme="preferred-color-scheme"
+    crossorigin="anonymous"
+    async>
+</script>
 
 
   </main>
