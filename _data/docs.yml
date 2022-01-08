@@ -4,3 +4,9 @@
 - title: CTF Crypto Lecture Slides
   url: "/static/docs/ctfcrypto.pdf"
   date: "2021-09-07T15:17:46.312Z"
+- title: HTTP vs HTTPS
+  url: "/static/docs/https.pdf"
+  date: "2021-09-07T15:17:46.312Z"
+- title: Lattice Sieving Survey
+  url: "/static/docs/sieve.pdf"
+  date: "2021-09-07T15:17:46.312Z"
