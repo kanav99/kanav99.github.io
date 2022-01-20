@@ -5,7 +5,7 @@
 
   <title>
     
-      Sage Math notes for CTF Crypto | Kanav Gupta
+      Hash Fitting Problem | Kanav Gupta
     
   </title>
 
@@ -248,182 +248,55 @@
   <main>
 
     <h1>
-      Sage Math notes for CTF Crypto
+      Hash Fitting Problem
       
     </h1>
 
     <!-- for mathjax support -->
 
-<p class="blog-post-date">Posted on 07 Nov 2021</p>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+<script type="text/javascript" async src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-<p>Me and my friends at SDSLabs participated in BSides Ahmedabad 2021 CTF, and the outcome of the CTF was not something I liked, I found the crypto side a bit weak. The two problems I couldn’t solve (<code class="language-plaintext highlighter-rouge">ecc-rsa</code> and <code class="language-plaintext highlighter-rouge">there-were-eleven</code>) were not that hard, but my lack of Sagemath experience was a bit of reason why I couldn’t do it.</p>
 
-<p>So here it is, my notes on Sage math.</p>
-      <h2 id="choose-correct-field">
+<p class="blog-post-date">Posted on 02 Nov 2021</p>
+
+<p>I have an open problem, don’t know about any concrete applications.</p>
+      <h2 id="problem">
         
         
-          Choose correct field <a href="#choose-correct-field" class="anchor-heading">#</a>
+          Problem <a href="#problem" class="anchor-heading">#</a>
         
         
       </h2>
     
 
-<p>For RSA and any modular math, use <code class="language-plaintext highlighter-rouge">Zmod(p)</code>.</p>
-
-<pre><code class="language-sage">F = Zmod(p)
-</code></pre>
-      <h2 id="polynomial-fields">
+<p>We are given a finite set \(S \subset \{0, 1\}^*\) which contains \(n\) strings. The problem is to generate a cryptographically secure hash function   \(f: \{0, 1\}^* \longrightarrow \mathbb{Z}_{log_2(n)}\) in polynomial time, such that for any two unique strings \(x, y \in S\),   \(f(x) \neq f(y)\). We will call this problem <em>Hash-Fitting Problem</em>.</p>
+      <h2 id="when">
         
         
-          Polynomial Fields <a href="#polynomial-fields" class="anchor-heading">#</a>
+          When? <a href="#when" class="anchor-heading">#</a>
         
         
       </h2>
     
 
-<p>We want to make a field of polynomials where the arithmetic is happening over the <code class="language-plaintext highlighter-rouge">F</code> field and has variables <code class="language-plaintext highlighter-rouge">x, y, z</code></p>
+<p>I was thinking about the a famous MPC problem  - <em>Private Information Retrieval</em>. In this, one party owns an array \(A\) and the other party owns an index \(i\). The objective is to let the second party know \(A[i]\) only, without the first party knowing learning anything about \(i\). This is a generalization of <em>Oblivious Transfer</em> where \(A\) contains only two elements.</p>
 
-<pre><code class="language-sage">PR.&lt;x, y, z&gt; = PolynomialRing(F)
-</code></pre>
-
-<p>or</p>
-
-<pre><code class="language-sage">PR = PolynomialRing(F, 3, 'x,y,z')
-x, y, z = PR.gens()
-</code></pre>
-      <h2 id="solving-multivariate-polynomials-over-zmodp">
+<p>PIR is useful for realizing private static websites, where \(A\) is analogous to the array of static pages and \(i\) is the path that you type in the address bar. Though this would require a specialized web browser to implement, but even if such browser exists, the static website owner would have to have a public function to convert string paths like “/”, “/home” to numbers. They could have a lookup table for this function, but they would then have to expose all the paths. This might not be something that the server owner wants. Hence we need to solve this problem.</p>
+      <h2 id="interested">
         
         
-          Solving multivariate polynomials over Zmod(p) <a href="#solving-multivariate-polynomials-over-zmodp" class="anchor-heading">#</a>
+          Interested? <a href="#interested" class="anchor-heading">#</a>
         
         
       </h2>
     
 
-<p>One might be tempted to use <code class="language-plaintext highlighter-rouge">solve_mod</code> function to solve a system of equations over a modulo. But if you have a special case when -</p>
-
-<ol>
-  <li>Functions are multivariate polynomials.</li>
-  <li><code class="language-plaintext highlighter-rouge">p</code> is huge</li>
-</ol>
-
-<p>In this case, <code class="language-plaintext highlighter-rouge">solve_mod</code> sometimes fails with Overflow Error. Instead, use Groebner Basis of the polynomials.</p>
-
-<pre><code class="language-sage">f1 = x*y + x^2 - 88
-f2 = y^2 - z^2 + 51
-f3 = z^2 - z + x*y - 102
-I = (f1, f2, f3)*P
-print(I.groebner_basis())
-</code></pre>
-
-<p>(This is a random example and doesn’t print anything good, but when equations are <em>well formed</em> the basis literally spits out the solution).</p>
-      <h2 id="what-is-groebner-basis">
-        
-        
-          What is Groebner Basis? <a href="#what-is-groebner-basis" class="anchor-heading">#</a>
-        
-        
-      </h2>
-    
-
-<p>TODO</p>
-      <h2 id="chinese-remainder-theorem">
-        
-        
-          Chinese remainder theorem <a href="#chinese-remainder-theorem" class="anchor-heading">#</a>
-        
-        
-      </h2>
-    
-
-<p>CRT is a useful function that given moduli <code class="language-plaintext highlighter-rouge">n1, n2, n3...</code> and respective remainders <code class="language-plaintext highlighter-rouge">r1, r2, r3...</code>, it finds a number <code class="language-plaintext highlighter-rouge">m</code> modulo <code class="language-plaintext highlighter-rouge">n1*n2*n3...</code> such that <code class="language-plaintext highlighter-rouge">m = ri mod ni</code> for all <code class="language-plaintext highlighter-rouge">i</code>.</p>
-
-<pre><code class="language-sage">m = crt([r1, r2, r3], [n1, n2, n3])
-</code></pre>
-      <h2 id="lagrange-interpolation">
-        
-        
-          Lagrange Interpolation <a href="#lagrange-interpolation" class="anchor-heading">#</a>
-        
-        
-      </h2>
-    
-
-<p>Lagrange interpolation finds a polynomial f such that given <code class="language-plaintext highlighter-rouge">m</code> pairs of <code class="language-plaintext highlighter-rouge">(xi, yi)</code>, <code class="language-plaintext highlighter-rouge">f(xi) = yi</code>. Degree of f is at max <code class="language-plaintext highlighter-rouge">m-1</code></p>
-
-<pre><code class="language-sage">shares = [(1, 1651293975450381579706844999808202297670211173037061827272908790114230592434748044848097133563469251678879059156225205298834971071359017469397331605782920), (2, 49656064002974834481096383104316375265711545391722811288216446968986145936494966876404160910407919885451814058823146922107458035910700220495010462147112), (3, 1481214561214496310917942246038921499126047497749957535731608952096552856013930232284898279007009260107597472601959627310496773682697020898442717240484400), (4, 1950790377868548708758723604473108315857898618124646291056275632619091046294238343215502355242288776617394025418770078552886012721353626716473759644786481)]
-
-shares = [(F(x), F(y)) for x,y in shares ]
-reconstructed_polynomial = PR.lagrange_polynomial(shares)
-</code></pre>
-
-<p>Always remember to convert the number to the correct field element!</p>
-      <h2 id="polynomial-gcd">
-        
-        
-          Polynomial GCD <a href="#polynomial-gcd" class="anchor-heading">#</a>
-        
-        
-      </h2>
-    
-
-<p>When two polynomials are known to have a common root, the best way to get that root is by calculating the polynomial gcd. Passing two polynomial objects in gcd could work but is not fast. Use half-GCD algorithm.</p>
-
-<p>(Source: https://github.com/death-of-rats/CTF/tree/master/Dice2021/plagiarism)</p>
-
-<pre><code class="language-sage">def hgcd(a0,a1):
-    if a1.degree() &lt;= (a0.degree()//2):
-        return np.array([[1,0],[0,1]])
-    m = a0.degree()//2
-    X = a0.variables()[0]
-    b0 = a0 // X**m
-    b1 = a1 // X**m
-    R = hgcd(b0,b1)
-    [d,e] = (R.dot(np.array([a0,a1]).transpose())).transpose()
-    ff = d % e
-    m = m // 2
-    g0 = e // X**m
-    g1 = ff // X**m
-    S = hgcd(g0,g1)
-    q = d // e
-    return S.dot(np.array([[0,1],[1,-q]])).dot(R)
-
-def gcd(a0,a1):
-    while True:
-        print(a0.degree(), end=", ", flush=True)
-        if a0 % a1 == 0:
-            return a1
-        if a0.degree() == a1.degree():
-            a1 = a0%a1
-        #print(a0.degree())
-        R = hgcd(a0,a1)
-        [b0,b1] = R.dot(np.array([a0,a1]).transpose()).transpose()
-        if b0%b1==0:
-            return b1
-        c = b0 % b1
-        a0 = b1
-        a1 = c
-</code></pre>
-      <h2 id="lattices">
-        
-        
-          Lattices <a href="#lattices" class="anchor-heading">#</a>
-        
-        
-      </h2>
-    
-
-<p>TODO</p>
-      <h2 id="coppersmith-short-pad-attack">
-        
-        
-          Coppersmith short-pad attack <a href="#coppersmith-short-pad-attack" class="anchor-heading">#</a>
-        
-        
-      </h2>
-    
-
-<p>TODO</p>
+<p>Hit me up and we can discuss :)</p>
 
 
 

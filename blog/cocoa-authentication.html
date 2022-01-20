@@ -252,7 +252,9 @@
       
     </h1>
 
-    <p class="blog-post-date">Posted on 17 Jan 2021</p>
+    <!-- for mathjax support -->
+
+<p class="blog-post-date">Posted on 17 Jan 2021</p>
 
 <p>Running privilidged code is impossible in app sandbox. But sometimes, you need administrative or <code class="language-plaintext highlighter-rouge">sudo</code> privilidges to perform certain tasks. For instance, vmnet.framework needs either <code class="language-plaintext highlighter-rouge">sudo</code> privilidges or proper signing (for which you need Apple’s <a href="https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_vm_networking">blessing</a>) to work. Unfortunately, Swift (as of 17 Jan 2021) doesn’t provide any API to get administrative privilidges for a non sandboxed app. Luckily, Swift has a really great interop with C, C++ and especially Objective-C. So, We will use good old Objective-C to request such privilidges.</p>
 
