@@ -1,5 +1,5 @@
 ---
-title: Find the Function End in Assembly code
+title: Finding function end in Assembly code
 usemathjax: true
 ---
 
