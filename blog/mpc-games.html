@@ -5,7 +5,7 @@
 
   <title>
     
-      Killing headers from C - Part 1 | Kanav Gupta
+      MPC and Games | Kanav Gupta
     
   </title>
 
@@ -257,26 +257,76 @@
   <main>
 
     <h1>
-      Killing headers from C - Part 1
+      MPC and Games
       
     </h1>
 
     <!-- for mathjax support -->
 
-<p class="blog-post-date">Posted on 30 Dec 2021</p>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-<p>I love C. More than any compiled languages. It feels natural for Linux and ELF binaries. One thing I don’t like about C, and don’t know why this problem is existant in C++, is header files. Build systems of Rust and Go propose a good model for projects. Just a <code class="language-plaintext highlighter-rouge">pub</code> makes a function/variable public to outer world.</p>
 
-<p>But I don’t want to mess with GCC. So here is what I propose - autogenerate header files from <code class="language-plaintext highlighter-rouge">.c</code> files. A new keyword <code class="language-plaintext highlighter-rouge">pub</code> moves a function/variable/struct declaration to the header file. The WIP project is available at <a href="https://github.com/kanav99/cbuild">kanav99/cbuild</a>.</p>
+<p class="blog-post-date">Posted on 25 Jan 2022</p>
 
-<p>Currently I am working/have implemented only limited features.</p>
-<ul>
-  <li>No macros other than <code class="language-plaintext highlighter-rouge">#include</code></li>
-  <li>No function declarations in <code class="language-plaintext highlighter-rouge">.c</code> files.</li>
-  <li>Everything is public</li>
-</ul>
+<p>I have been thinking a lot about applications of Secure MPC in games to prevent cheating - especially in strategy games. One might argue that MPC is not developed enough for low latency applications like games yet. But the work that I am doing at MSR, I believe that we are very close - we have already achieved a runtime of 1000 times the cleartext computations. Which might sound very bad to game developers but very hopeful to MPC researchers. Every year we see a new state of the art which is atleast 2x better than previous works. As of now, we can atleast make turn based games, where latency doesn’t matter much.</p>
 
-<p>Hope this doesn’t become my Yet Another Side Project.</p>
+<p>I will use this blog as an idea dump for applications of MPC in games. I will keep updating as I get new ideas. Please consider giving a shoutout if you happen to work on these ideas :)</p>
+      <h2 id="turn-based-games---pokemon">
+        
+        
+          Turn based games - Pokemon <a href="#turn-based-games---pokemon" class="anchor-heading">#</a>
+        
+        
+      </h2>
+    
+
+<p>Consider the game of Pokemon Battles. Two players each have a pokemon with stats and 4 moves. These moves can be from a finite set of all moves. Each move affects the opponent pokemon’s stats in a bad way or your own pokemon in a good way. In a single round, the trainers choose a move, and their pokemon attack the other pokemon. The move which affects the other first depends on the speed stat of the pokemon. Finally, the battle ends when the HP stat of one of the pokemon becomes 0.</p>
+
+<p>Now the affects of these moves are so complex that you don’t want to tell the opponent your attack before the round ends. Hence, crypto is important here.</p>
+
+<p>Consider the functionality of each round</p>
+
+\[\mathsf{stat}^1_i, \mathsf{stat}^2_i = f(\mathsf{stat}^1_{i-1}, \mathsf{stat}^2_{i-1}, \mathsf{move}^1, \mathsf{move}^2)\]
+
+<p>Here, only \(\mathsf{move}^1\) and \(\mathsf{move}^2\) are secret choices of party 1 and 2 respectively. Stats are public. This function \(f\) can contain these -</p>
+
+<ol>
+  <li>Public Array Lookup - Selecting a move from a public list of moves depending on the secret choices.</li>
+  <li>Arithmetic - Once the move is selected, their effect is calculated and stats are updated using some simple addition, subtraction and multiplication.</li>
+  <li>Comparisons - Some moves like Quick Attack always go first.</li>
+  <li>Random Coin Tossing - Whether the attack succeeds or not depends on the probability determined by accuracy stat and the move.</li>
+</ol>
+
+<p>Recent works suggest that all these operations are possible!</p>
+
+<p>Update: I just realized that after the computation, moves can be revealed. So we basically need a commitment scheme and a 2PC coin tossing protocol. Sorry for overengineering, but I am not deleting that. Might be helpful for visualizing other models in such fundamental units.</p>
+      <h2 id="games-with-maps">
+        
+        
+          Games with Maps <a href="#games-with-maps" class="anchor-heading">#</a>
+        
+        
+      </h2>
+    
+
+<p>I am writing this section just to demonstrate the application of one branch of MPC to games - Private Set Intersection. This is a branch of MPC where goal is to compute intersection of two sets owned by different parties. Generally in games, there is a tendency to do something when an enemy approaches your region. So knowing when the enemy’s region intersected with yours can be done using PSI. Ofcourse, if we are using eulerian maps with a round range of sight, a simple computation of \((x_1 - x_2)^2 + (y_1 - y_2)^2 &lt; R^2\) can help us detect intersection, without doing any PSI.</p>
+      <h2 id="3pc-and-preprocessing-model">
+        
+        
+          3PC and Preprocessing model <a href="#3pc-and-preprocessing-model" class="anchor-heading">#</a>
+        
+        
+      </h2>
+    
+
+<p>Recent works suggest that 3PC arithmetic is much much better than 2PC arithmetic, both multiplication and divison. But 3PC is an unnecesary load to a central third party.</p>
+
+<p>One really great innovation recently happening is 2PC with preprocessing. In this model, there is a dealer, which generates “keys” or “preprocessing material” or “co-related randomness” for both the parties and leaves the scenario. Now with the help of these keys, the two parties carry out a protocol. Basically with the help of the key, we bring some key features of 3PC - especially faster arithmetic. Functional Secret Sharing is one of the ways to realize this - and it comes with one more great property - low round complexity, which means that the protocol will become less chatty and more homework. Which is good because we want to host our game on the internet and time taken for local computation is much less than the time taken in sending and recieving messages. Also, as the dealer has to leave, the dealer doesn’t need to stay online waiting for the parties to decide what move they want to make. Sweet!</p>
 
 
 
