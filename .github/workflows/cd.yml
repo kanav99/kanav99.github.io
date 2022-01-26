@@ -30,6 +30,8 @@ jobs:
 
     - name: Build site
       run: bundle exec jekyll build
+      env:
+          JEKYLL_ENV: production
 
     - name: Add CNAME
       run: cp CNAME ./_site
