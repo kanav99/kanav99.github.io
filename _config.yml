@@ -20,9 +20,6 @@ collections:
   blog:
     output: true
     permalink: "/blog/:slug:output_ext"
-  projects:
-    output: true
-    permalink: "/projects/:slug:output_ext"
 
 defaults:
 - scope:
@@ -30,11 +27,6 @@ defaults:
     type: blog
   values:
     layout: blog
-- scope:
-    path: ""
-    type: projects
-  values:
-    layout: project
 
 plugins:
 - jekyll-feed
