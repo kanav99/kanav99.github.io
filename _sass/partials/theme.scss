@@ -15,14 +15,14 @@ $monospace-font: "JetBrains Mono", monospace;
   --secondary-bg-color: #E0E0E0;
   --overlay-color:      255, 255, 255;
 
-  @media (prefers-color-scheme: dark) {
-    --primary-color:      #EEEEEE;
-    --secondary-color:    #999999;
-    --font-color:         #D8D8D8;
-    --background-color:   #020202;
-    --secondary-bg-color: #1F1F1F;
-    --overlay-color:      0, 0, 0;
-  }
+//   @media (prefers-color-scheme: dark) {
+//     --primary-color:      #EEEEEE;
+//     --secondary-color:    #999999;
+//     --font-color:         #D8D8D8;
+//     --background-color:   #020202;
+//     --secondary-bg-color: #1F1F1F;
+//     --overlay-color:      0, 0, 0;
+//   }
 }
 
 html, body {
