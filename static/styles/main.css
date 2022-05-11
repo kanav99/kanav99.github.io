@@ -41,7 +41,7 @@ svg { fill: currentColor; }
 
 .landing-main-heading-content { width: auto; height: auto; text-align: center; }
 
-.landing-main-heading-content-title, .header-heading-title { font-size: 10rem; font-weight: bold; font-style: italic; color: var(--primary-color); }
+.landing-main-heading-content-title, .header-heading-title { font-size: 10rem; font-weight: bold; color: var(--primary-color); }
 
 @media only screen and (max-width: 720px) { .landing-main-heading-content-title, .header-heading-title { font-size: 20vw; } }
 
