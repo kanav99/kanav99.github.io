@@ -3,7 +3,7 @@
 - title: Blog
   href: "/blog/"
 - title: Publications
-  href: "/docs/"
+  href: "/publications/"
 - title: Resume
   href: "/static/assets/resume.pdf"
   target: _blank
