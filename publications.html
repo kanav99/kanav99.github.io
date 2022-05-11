@@ -14,7 +14,8 @@ permalink: /publications/
 {% for doc in site.data.pubs reversed %}
   <p>
     <strong>{{ doc.title }}</strong>
-    <div class="blog-post-date blog-list-date">at {{ doc.conference }}</div>
+    <div class="blog-post-date blog-list-date">with {{ doc.authors }}</div>
+    <div class="blog-post-date blog-list-date">{{ doc.conference }}</div>
   </p>
 {% endfor %}
 
