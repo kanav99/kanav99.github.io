@@ -3,6 +3,24 @@ layout: multiheading
 permalink: /publications/
 
 ---
+<h1>Publications</h1>
+
+{% if site.data.pubs.size == 0 %}
+  <p>
+    <em>There are no publications to show right now</em>
+  </p>
+{% else %}
+
+{% for doc in site.data.pubs reversed %}
+  <p>
+    <strong>{{ doc.title }}</strong>
+    <div class="blog-post-date blog-list-date">at {{ doc.conference }}</div>
+  </p>
+{% endfor %}
+
+{% endif %}
+
+
 <h1>Misc</h1>
 
 {% if site.data.docs.size == 0 %}
