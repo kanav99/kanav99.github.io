@@ -263,7 +263,7 @@ header { width: 20rem; height: 100%; position: fixed; top: 0; left: 0; display: 
 
 .header-heading-context p { line-height: 1.2; }
 
-.header-nav { margin-top: 4rem; width: 100%; }
+.header-nav { margin-top: 2rem; width: 100%; }
 
 .header-nav p { line-height: 2.5; text-align: center; }
 
