@@ -1,3 +1,5 @@
 - title: LLAMA - A Low Latency Math Library for Secure Inference
   conference: PETS'22
-  authors: Deepak Kumaraswamy, Divya Gupta and Nishanth Chandran
+  authors: Kanav Gupta, Deepak Kumaraswamy, Divya Gupta and Nishanth Chandran
+  link: https://petsymposium.org/popets/2022/popets-2022-0109.pdf
+  talk: https://www.youtube.com/watch?v=0J5Wea-cvn4

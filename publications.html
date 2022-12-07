@@ -14,13 +14,14 @@ title: Publications
 {% for doc in site.data.pubs reversed %}
   <p>
     <strong>{{ doc.title }}</strong>
-    <div class="blog-post-date blog-list-date">with {{ doc.authors }} at {{ doc.conference }}</div>
+    <div>> {{ doc.authors }} at {{doc.conference}}</div>
+    <div>> <a href="{{doc.link}}">Paper</a>,&nbsp;&nbsp;<a href="{{doc.talk}}">Talk</a></div>
   </p>
 {% endfor %}
 
 {% endif %}
 
-
+<!-- 
 <h1>Misc</h1>
 
 {% if site.data.docs.size == 0 %}
@@ -36,6 +37,6 @@ title: Publications
       ><strong>{{ doc.title }}</strong></a>
     <span class="blog-post-date blog-list-date">{{ doc.date | date_to_string }}</span>
   </p>
-{% endfor %}
+{% endfor %} -->
 
 {% endif %}
