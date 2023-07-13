@@ -1,5 +1,5 @@
 - title: LLAMA - A Low Latency Math Library for Secure Inference
-  conference: PETS'22
+  conference: PETS 2022
   authors: 
     - Kanav Gupta
     - Deepak Kumaraswamy
@@ -13,7 +13,7 @@
     - name: talk
       url: https://www.youtube.com/watch?v=0J5Wea-cvn4
 - title: "Orca: FSS-based Secure Training and Inference with GPUs"
-  conference: Oakland'24
+  conference: IEEE S&P 2024
   authors: 
     - Neha Jawalkar
     - Kanav Gupta
