@@ -1,5 +1,27 @@
 - title: LLAMA - A Low Latency Math Library for Secure Inference
   conference: PETS'22
-  authors: Kanav Gupta, Deepak Kumaraswamy, Divya Gupta and Nishanth Chandran
-  link: https://petsymposium.org/popets/2022/popets-2022-0109.pdf
-  talk: https://www.youtube.com/watch?v=0J5Wea-cvn4
+  authors: 
+    - Kanav Gupta
+    - Deepak Kumaraswamy
+    - Divya Gupta
+    - Nishanth Chandran
+  links:
+    - name: conference
+      url: https://petsymposium.org/popets/2022/popets-2022-0109.pdf
+    - name: eprint
+      url: https://eprint.iacr.org/2022/793
+    - name: talk
+      url: https://www.youtube.com/watch?v=0J5Wea-cvn4
+- title: "Orca: FSS-based Secure Training and Inference with GPUs"
+  conference: Oakland'24
+  authors: 
+    - Neha Jawalkar
+    - Kanav Gupta
+    - Arkaprava Basu
+    - Nishanth Chandran
+    - Divya Gupta
+    - Rahul Sharma
+  links:
+    - name: eprint
+      url: https://eprint.iacr.org/2023/206
+
