@@ -265,7 +265,7 @@ header { width: 20rem; height: 100%; position: fixed; top: 0; left: 0; display: 
 
 .header-nav { margin-top: 2rem; width: 100%; }
 
-.header-nav p { line-height: 2.5; text-align: center; }
+.header-nav p { line-height: 2.5; text-align: left; }
 
 .header-contact { margin: 2rem 0 3rem; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center; }
 
