@@ -18,6 +18,12 @@
             href="{{ link.href }}"
             target="{{ link.target }}"
           >
+            <!-- Add a caret if its active page -->
+            {% if page.url == link.href %}
+              <span width="20px">> </span>
+            {% else %}
+              <span width="20px">  </span>
+            {% endif %}
             {{ link.title }}
           </a>
         </p>
