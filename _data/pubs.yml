@@ -24,4 +24,17 @@
   links:
     - name: eprint
       url: https://eprint.iacr.org/2023/206
+- title: "SIGMA: Secure GPT Inference with Function Secret Sharing"
+  conference: In submission
+  authors: 
+    - Kanav Gupta
+    - Neha Jawalkar
+    - Ananta Mukherjee
+    - Nishanth Chandran
+    - Divya Gupta
+    - Ashish Panwar
+    - Rahul Sharma
+  links:
+    - name: eprint
+      url: https://eprint.iacr.org/2023/1269
 
