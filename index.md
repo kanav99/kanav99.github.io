@@ -15,4 +15,4 @@ Previously, I was a research fellow in [EzPC](https://www.microsoft.com/en-us/re
 
 I graduated with a bachelors degree in computer science from IIT Roorkee. During my undergrad, I was a part of [SDSLabs](https://sdslabs.co), a group of enthusiastic students who constantly try to deliver some amazing applications. 
 
-I enjoy playing Capture-The-Flag (CTF) competitions. I am currently part of the team [CVE2K9](https://cve.gay). I like to solve crypto and rev challenges.
+I enjoy playing Capture-The-Flag (CTF) competitions. I am currently part of the team [sillysec](https://cve.gay). I like to solve crypto and rev challenges.
