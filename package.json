@@ -1,25 +1,101 @@
 {
-  "name": "vrongmeal.github.io",
-  "version": "1.0.0",
-  "description": "About, Blog and Projects of Vaibhav, a.k.a., @vrongmeal",
+  "name": "my-page",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@babel/core": "^7.16.0",
+    "@chakra-ui/react": "^2.1.2",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@monaco-editor/react": "^4.4.5",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
+    "@svgr/webpack": "^8.1.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^14.2.0",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^12.20.54",
+    "@types/react": "^18.0.11",
+    "@types/react-dom": "^18.0.5",
+    "assert": "^2.0.0",
+    "babel-jest": "^27.4.2",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-named-asset-import": "^0.3.8",
+    "babel-preset-react-app": "^10.0.1",
+    "bfj": "^7.0.2",
+    "browserslist": "^4.18.1",
+    "buffer": "^6.0.3",
+    "camelcase": "^6.2.1",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "css-loader": "^6.5.1",
+    "css-minimizer-webpack-plugin": "^3.2.0",
+    "dotenv": "^10.0.0",
+    "dotenv-expand": "^5.1.0",
+    "eslint": "^8.3.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-webpack-plugin": "^3.1.1",
+    "file-loader": "^6.2.0",
+    "framer-motion": "^6.3.10",
+    "fs-extra": "^10.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.4.3",
+    "jest-resolve": "^27.4.2",
+    "jest-watch-typeahead": "^1.0.0",
+    "mini-css-extract-plugin": "^2.4.5",
+    "postcss": "^8.4.4",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-loader": "^6.2.1",
+    "postcss-normalize": "^10.0.1",
+    "postcss-preset-env": "^7.0.1",
+    "prompts": "^2.4.2",
+    "react": "^18.1.0",
+    "react-app-polyfill": "^3.0.0",
+    "react-dev-utils": "^12.0.1",
+    "react-dom": "^18.1.0",
+    "react-icons": "^3.11.0",
+    "react-refresh": "^0.11.0",
+    "resolve": "^1.20.0",
+    "resolve-url-loader": "^5.0.0",
+    "sass-loader": "^12.3.0",
+    "semver": "^7.3.5",
+    "solc": "^0.8.14-fixed",
+    "source-map-loader": "^3.0.0",
+    "stream-browserify": "^3.0.0",
+    "style-loader": "^3.3.1",
+    "tailwindcss": "^3.0.2",
+    "terser-webpack-plugin": "^5.2.5",
+    "typescript": "^4.7.3",
+    "url": "^0.11.0",
+    "web-vitals": "^0.2.4",
+    "webpack": "^5.5.0",
+    "webpack-dev-server": "^4.6.0",
+    "webpack-manifest-plugin": "^4.0.2",
+    "workbox-webpack-plugin": "^6.4.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "parcel build -d static/scripts -o index.js --no-source-maps _js/index.js"
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vrongmeal/vrongmeal.github.io.git"
+  "eslintConfig": {
+    "extends": "react-app"
   },
-  "keywords": [],
-  "author": "Vaibhav <vrongmeal@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/vrongmeal/vrongmeal.github.io/issues"
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
   },
-  "homepage": "https://github.com/vrongmeal/vrongmeal.github.io#readme",
-  "devDependencies": {
-    "medium-zoom": "^1.0.6",
-    "parcel-bundler": "^1.12.4"
-  },
-  "dependencies": {}
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

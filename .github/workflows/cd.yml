@@ -9,18 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 2.6
-
     - name: Checkout
       uses: actions/checkout@v2
       with:
         persist-credentials: false
-
-    - name: Install gems
-      run: bundle install
 
     - name: Install node modules
       run: npm install
@@ -28,17 +20,9 @@ jobs:
     - name: Build JS
       run: npm run build
 
-    - name: Build site
-      run: bundle exec jekyll build
-      env:
-          JEKYLL_ENV: production
-
-    - name: Add CNAME
-      run: cp CNAME ./_site
-
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: _site
+        FOLDER: build
