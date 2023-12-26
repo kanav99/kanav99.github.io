@@ -12,6 +12,8 @@ import {
   Image,
 } from "@chakra-ui/react";
 
+import { mode } from "@chakra-ui/theme-tools";
+
 import { FaGithub, FaTwitter } from "react-icons/fa";
 
 const publications = [
@@ -68,7 +70,16 @@ const config = {
   useSystemColorMode: false,
 };
 
-const theme = extendTheme({ config });
+const theme = extendTheme({ 
+  config,
+  styles: {
+    global: (props) => ({
+      body: {
+        bg: mode("rgb(30, 30, 30)", "rgb(30, 30, 30)")(props),
+      }
+    })
+  },
+});
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -80,16 +91,22 @@ export const App = () => {
     textAlign: "left",
     lineHeight: "29px"
   };
-
+  
   const captionStyle = {
     fontSize: "12px",
-    fontStyle: "italic"
+    fontStyle: "italic",
+    lineHeight: "15px",
+    justifyContent: "center",
   };
 
-  const cats = ["cry.jpg", "cool.jpg"];
+  const cats = ["cry.jpg", "cool.jpg", "bunger.jpg", "faint.png", "pirate.jpg", "polite.jpg"];
   const captions = [
     "a crying cat watching youtube shorts",
-    "a cool cat with raybans"
+    "a cool cat with raybans",
+    "bunger",
+    "wild catto fainted",
+    "jack spurrow",
+    "a polite cat"
   ]
 
   const idx = getRandomInt(cats.length);
@@ -155,14 +172,13 @@ export const App = () => {
                   <Text>{`${i+1}. `}</Text>
                   <VStack align="left">
                     <Text>{pub.name} {Object.keys(pub.links).map((key, _j) => <Link href={pub.links[key]}>{`[${key}]`}</Link>)}</Text>
-                    {/* {Object.keys(pub.links).map((key, _j) => <Link href={pub.links[key]}>{`[${key}]`}</Link>)}</Text>} */}
                     <Text>by {pub.authors.join(", ")}</Text>
                     <Text>{pub.venue ? `at ${pub.venue}` : "In Submission"}</Text>
                   </VStack>
                 </HStack>)}
               </VStack>
             </VStack>
-            <VStack width="400px">
+            <VStack width="400px" align="center">
               <Image src={`/cats/${cats[idx]}`}/>
               <Text style={captionStyle}>{`${captions[idx]}`}</Text>
             </VStack>
