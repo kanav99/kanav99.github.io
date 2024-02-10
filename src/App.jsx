@@ -158,7 +158,7 @@ export const App = () => {
                 Previously, I was a research fellow in EzPC group at Microsoft Research India, advised by Dr. <Link href="https://www.microsoft.com/en-us/research/people/digup/">Divya Gupta</Link>, Dr. <Link href="https://www.microsoft.com/en-us/research/people/nichandr/">Nishanth Chandran</Link>, and Dr. <Link href="https://www.microsoft.com/en-us/research/people/rahsha/">Rahul Sharma </Link>. I graduated with a bachelors degree in computer science from IIT Roorkee under the guidance of Prof. <Link href="https://www.iitr.ac.in/~CSE/Gangopadhyay_Sugata">Sugata Gangopadhyay</Link>.
               </Text>
               <Text>
-                During my undergrad, I was a part of <Link href="https://sdslabs.co/">SDSLabs</Link>, a group of enthusiastic students who constantly try to deliver some amazing applications. I enjoy playing Capture-The-Flag (CTF) competitions. I am currently part (on hiatus) of the team <Link href="https://cve.gay/">sillysec</Link>. I like to solve crypto and rev challenges.
+                During my undergrad, I was a part of <Link href="https://sdslabs.co/">SDSLabs</Link>. I enjoy playing Capture-The-Flag (CTF) competitions. I am currently part (on hiatus) of the team <Link href="https://cve.gay/">sillysec</Link>. I like to solve crypto and rev challenges.
               </Text>
               {/* put some space */}
               <Text></Text>
