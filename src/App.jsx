@@ -160,6 +160,9 @@ export const App = () => {
               <Text>
                 During my undergrad, I was a part of <Link href="https://sdslabs.co/">SDSLabs</Link>. I enjoy playing Capture-The-Flag (CTF) competitions. I am currently part (on hiatus) of the team <Link href="https://cve.gay/">sillysec</Link>. I like to solve crypto and rev challenges.
               </Text>
+              <Text>
+                Email: [firstname]@umd.edu
+              </Text>
               {/* put some space */}
               <Text></Text>
               <Text></Text>
