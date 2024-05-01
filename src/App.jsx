@@ -31,8 +31,9 @@ const publications = [
     ],
     links: {
       "eprint": "https://eprint.iacr.org/2023/1269",
-      "RWC24 slides": "https://iacr.org/submit/files/slides/2024/rwc/rwc2024/26/slides.pdf",
-    }
+      "RWC24 talk": "https://www.youtube.com/watch?v=r6jK4nmkq54",
+    },
+    venue: "PETS '24"
   },
   {
     name: "Orca: FSS-based Secure Training and Inference with GPUs",
