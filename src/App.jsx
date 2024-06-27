@@ -86,9 +86,9 @@ const theme = extendTheme({
 
 const NewLink = (props) => {return <Link {...props} style={{textDecoration: "underline"}} />;}
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
+// function getRandomInt(max) {
+//   return Math.floor(Math.random() * max);
+// }
 
 export const App = () => {
   const baburao = {
@@ -97,24 +97,24 @@ export const App = () => {
     lineHeight: "29px"
   };
   
-  const captionStyle = {
-    fontSize: "12px",
-    fontStyle: "italic",
-    lineHeight: "15px",
-    justifyContent: "center",
-  };
+  // const captionStyle = {
+  //   fontSize: "12px",
+  //   fontStyle: "italic",
+  //   lineHeight: "15px",
+  //   justifyContent: "center",
+  // };
 
-  const cats = ["cry.jpg", "cool.jpg", "bunger.jpg", "faint.png", "pirate.jpg", "polite.jpg"];
-  const captions = [
-    "a crying cat watching youtube shorts",
-    "a cool cat with raybans",
-    "bunger",
-    "wild catto fainted",
-    "jack spurrow",
-    "a polite cat"
-  ]
+  // const cats = ["cry.jpg", "cool.jpg", "bunger.jpg", "faint.png", "pirate.jpg", "polite.jpg"];
+  // const captions = [
+  //   "a crying cat watching youtube shorts",
+  //   "a cool cat with raybans",
+  //   "bunger",
+  //   "wild catto fainted",
+  //   "jack spurrow",
+  //   "a polite cat"
+  // ]
 
-  const idx = getRandomInt(cats.length);
+  // const idx = getRandomInt(cats.length);
 
   return (
     <ChakraProvider theme={theme}>
