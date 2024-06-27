@@ -186,8 +186,8 @@ export const App = () => {
               </VStack>
             </VStack>
             <VStack width={["100%", "50%"]} align="center">
-              <Image src={`/cats/${cats[idx]}`}/>
-              <Text style={captionStyle}>{`${captions[idx]}`}</Text>
+              <Image src={`/me.jpg`}/>
+              {/* <Text style={captionStyle}>{`${captions[idx]}`}</Text> */}
             </VStack>
           </Stack>
         </VStack>
