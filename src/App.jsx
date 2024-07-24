@@ -167,6 +167,9 @@ export const App = () => {
               <Text>
                 Email: [firstname]@umd.edu
               </Text>
+              <Text>
+                Potential employer? <NewLink href="https://kanav99.github.io/cv.pdf">CV</NewLink>
+              </Text>
               {/* put some space */}
               <Text></Text>
               <Text></Text>
