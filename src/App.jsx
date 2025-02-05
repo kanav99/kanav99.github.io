@@ -75,6 +75,7 @@ const publications = [
       "Jonathan Katz",
       "Rahul Sharma"
     ],
+    links: {}
   }
 ]
 
