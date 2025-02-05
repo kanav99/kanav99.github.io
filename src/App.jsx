@@ -65,6 +65,16 @@ const publications = [
       "talk": "https://www.youtube.com/watch?v=0J5Wea-cvn4"
     },
     venue: "PETS '22"
+  },
+  {
+    name: "Shark: Actively Secure Inference using Function Secret Sharing",
+    authors: [
+      "Kanav Gupta",
+      "Nishanth Chandran",
+      "Divya Gupta",
+      "Jonathan Katz",
+      "Rahul Sharma"
+    ],
   }
 ]
 
