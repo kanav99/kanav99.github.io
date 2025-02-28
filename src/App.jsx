@@ -200,7 +200,7 @@ export const App = () => {
               </VStack>
             </VStack>
             <VStack width={["100%", "50%"]} align="center">
-              <Image src={`/me.png`}/>
+              <Image src={`/me.jpeg`}/>
               {/* <Text style={captionStyle}>{`${captions[idx]}`}</Text> */}
             </VStack>
           </Stack>
