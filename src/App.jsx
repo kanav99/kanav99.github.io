@@ -27,7 +27,8 @@ const publications = [
       "Jonathan Katz",
       "Rahul Sharma"
     ],
-    links: {}
+    links: {},
+    venue: "IEEE S&P '25"
   },
   {
     name: "SIGMA: Secure GPT Inference with Function Secret Sharing",
@@ -60,7 +61,7 @@ const publications = [
       "eprint" : "https://eprint.iacr.org/2023/206",
       "conference" : "https://www.computer.org/csdl/proceedings-article/sp/2024/313000a063/1RjEaAAmAAE",
     },
-    venue: "Oakland '24"
+    venue: "IEEE S&P '24"
   },
   {
     name: "LLAMA: A Low Latency Math Library for Secure Inference",
