@@ -174,7 +174,10 @@ export const App = () => {
                 Previously, I was a research fellow in EzPC group at Microsoft Research India, advised by Dr. <NewLink href="https://www.microsoft.com/en-us/research/people/digup/">Divya Gupta</NewLink>, Dr. <NewLink href="https://www.microsoft.com/en-us/research/people/nichandr/">Nishanth Chandran</NewLink>, and Dr. <NewLink href="https://www.microsoft.com/en-us/research/people/rahsha/">Rahul Sharma </NewLink>. I graduated with a bachelors degree in computer science from IIT Roorkee under the guidance of Prof. <NewLink href="https://www.iitr.ac.in/~CSE/Gangopadhyay_Sugata">Sugata Gangopadhyay</NewLink>.
               </Text>
               <Text>
-                During my undergrad, I was a part of <NewLink href="https://sdslabs.co/">SDSLabs</NewLink>. I enjoy playing Capture-The-Flag (CTF) competitions. I am currently part (on hiatus) of the team <NewLink href="https://cve.gay/">sillysec</NewLink>. I like to solve crypto and rev challenges.
+                During my undergrad, I was a part of <NewLink href="https://sdslabs.co/">SDSLabs</NewLink>. I enjoy playing Capture-The-Flag (CTF) competitions. I like to solve crypto and rev challenges.
+              </Text>
+              <Text>
+                News (May 2025): I will be interning at Google NYC this summer!
               </Text>
               <Text>
                 Email: [firstname]@umd.edu
