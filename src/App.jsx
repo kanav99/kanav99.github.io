@@ -27,7 +27,10 @@ const publications = [
       "Jonathan Katz",
       "Rahul Sharma"
     ],
-    links: {},
+    links: {
+        "eprint" : "https://eprint.iacr.org/2025/716",
+        "conference" : "https://www.computer.org/csdl/proceedings-article/sp/2025/223600c268/26hiUPCGeti"
+    },
     venue: "IEEE S&P '25"
   },
   {
@@ -44,6 +47,7 @@ const publications = [
     links: {
       "eprint": "https://eprint.iacr.org/2023/1269",
       "RWC24 talk": "https://www.youtube.com/watch?v=r6jK4nmkq54",
+      "conference": "https://petsymposium.org/popets/2024/popets-2024-0107.php"
     },
     venue: "PETS '24"
   },
