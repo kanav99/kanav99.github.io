@@ -3,18 +3,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <title>Blog Title</title>
   <subtitle>This is a longer description about your blog.</subtitle>
-  <link href="https://example.com/~kanav/feed/feed.xml" rel="self" />
-  <link href="https://example.com/~kanav/" />
+  <link href="https://example.com/feed/feed.xml" rel="self" />
+  <link href="https://example.com/" />
   <updated>2025-11-27T00:00:00Z</updated>
-  <id>https://example.com/~kanav/</id>
+  <id>https://example.com/</id>
   <author>
     <name>Your Name</name>
   </author>
   <entry>
     <title>This is my first post.</title>
-    <link href="https://example.com/~kanav/blog/firstpost/" />
+    <link href="https://example.com/blog/firstpost/" />
     <updated>2025-11-27T00:00:00Z</updated>
-    <id>https://example.com/~kanav/blog/firstpost/</id>
+    <id>https://example.com/blog/firstpost/</id>
     <content type="html">&lt;p&gt;Hello, this is my first blog post!&lt;/p&gt;
 &lt;p&gt;Happy Thanksgiving 🦃&lt;/p&gt;
 </content>
