@@ -12,6 +12,4 @@ Previously, I used to work with [Dr. Divya Gupta](https://www.microsoft.com/en-u
 
 Email: [firstname]@umd.edu
 
-My [CV](/cv.pdf)
-
 My [Research](https://scholar.google.com/citations?hl=en&user=QEFy_4wAAAAJ)
