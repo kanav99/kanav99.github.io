@@ -4,8 +4,8 @@
 		<meta charset="utf-8">
 		<meta name="google-site-verification" content="37QN2G4dhBlWX_eohFNwgnw7arvAC7rNzlPV56X6jqc">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>This is my first post.</title>
-		<meta name="description" content="This is a post on My Blog about agile frameworks.">
+		<title>Security Proofs #1: Motivation and Preliminaries</title>
+		<meta name="description" content="How to prove security of cryptographic protocols">
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Kanav&#39;s Personal Page and Blog">
 		
 		
@@ -504,23 +504,31 @@ pre[class*="language-diff-"] {
 				
 
 
-<h1 id="this-is-my-first-post">This is my first post.</h1>
+<h1 id="security-proofs-1-motivation-and-preliminaries">Security Proofs #1: Motivation and Preliminaries</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2025-11-27">27 November 2025</time></li>
-	<li><a href="/tags/hello-world/" class="post-tag">hello world</a></li>
+	<li><time datetime="2026-06-14">14 June 2026</time></li>
 </ul>
 
-<p>Hello, this is my first blog post!</p>
-<p>Happy Thanksgiving 🦃</p>
+<h2 id="blog-under-construction">(Blog Under Construction 🏗️ 🚧🦺)</h2>
+<h2 id="introduction">Introduction</h2>
+<p>What is encryption? What are digital signatures? What's homomorphic encryption? You might be aware of these objects in cryptography. But what exact security properties do these objects provide? And how do researchers argue that the constructions they came up with necessarily provides these guarantees? What exactly do we mean by &quot;secure&quot; in the first place?</p>
+<p>In this blog series, we will go through the answers (or at-least attempts) to these questions and develop the necessary mathematical/logic skills to understand or come up with security definitions and proofs.</p>
+<h2 id="preliminaries-logic-concepts">Preliminaries: Logic Concepts</h2>
+<p>We will briefly review some basic logic topics which occur a lot in crypto: implications, double implication, contrapositives, quantified statements, negation rules for quantifiers.</p>
+<p><strong>Statements and Theorems</strong>. A statement is any assertion with a truth value; it could be true or false. A theorem is a statement that is shown to be true.</p>
+<p><strong>Implications</strong>. For some two statements A and B, theorem &quot;A implies B&quot; or <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mi>B</mi></mrow><annotation encoding="application/x-tex">A \implies B</annotation></semantics></math></span> means that A is a sufficient condition for B to be true. That is, if A is true, B is for sure true. No claims can be made about B if A is false. It is similar to &quot;if-then&quot; in regular coding.</p>
+<p><strong>Contrapositive</strong>. Suppose we have theorem that <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mi>B</mi></mrow><annotation encoding="application/x-tex">A \implies B</annotation></semantics></math></span>. It can't be the case that B is false but A is true. So if B is false, A has to be false. This is also an implication but flipped: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi><mi>B</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mi mathvariant="normal">¬</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">\neg B \implies \neg A</annotation></semantics></math></span>. This is called the contrapositive rule: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mi>B</mi></mrow><annotation encoding="application/x-tex">A \implies B</annotation></semantics></math></span> is logically equivalent to <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi><mi>B</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mi mathvariant="normal">¬</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">\neg B \implies \neg A</annotation></semantics></math></span>.</p>
+<p><strong>Double Implication</strong>.  A theorem <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext><mi>B</mi></mrow><annotation encoding="application/x-tex">A \iff B</annotation></semantics></math></span> means that <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mi>B</mi></mrow><annotation encoding="application/x-tex">A \implies B</annotation></semantics></math></span> and <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mi>A</mi></mrow><annotation encoding="application/x-tex">B \implies A</annotation></semantics></math></span>, at the same time. With a little help of contrapositive rule, we can show that this means that A and B have same truth value every time. An example of double implication is the contrapositive rule itself: <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>A</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mi>B</mi><mo stretchy="false">)</mo><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext><mo stretchy="false">(</mo><mi mathvariant="normal">¬</mi><mi>B</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mi mathvariant="normal">¬</mi><mi>A</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(A \implies B) \iff (\neg B \implies \neg A)</annotation></semantics></math></span>.</p>
+<p><strong>Quantified Statements</strong>. We are in the boolean world till now. How do we argue about numbers (or any group for that matter)? For that, we have two types of quantified statements: existential (<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∃</mi></mrow><annotation encoding="application/x-tex">\exists</annotation></semantics></math></span>) and universal (<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∀</mi></mrow><annotation encoding="application/x-tex">\forall</annotation></semantics></math></span>). Let <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">Z</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}</annotation></semantics></math></span> denote the set of integers and <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span> be some function from integer to boolean truth value. Then theorem &quot;<span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∃</mi><mi>x</mi><mo>∈</mo><mi mathvariant="double-struck">Z</mi><mo separator="true">,</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\exists x \in \mathbb{Z}, f(x)</annotation></semantics></math></span>&quot;, means that &quot;there exists an integer <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span> for which <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math></span> is true&quot;. Similarly, theorem <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∀</mi><mi>x</mi><mo>∈</mo><mi mathvariant="double-struck">Z</mi><mo separator="true">,</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\forall x \in \mathbb{Z}, f(x)</annotation></semantics></math></span>, means that &quot;for all integers <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span>, <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math></span> is true&quot;.</p>
 
-<ul class="links-nextprev"><li class="links-nextprev-next">Next →<br><a href="/blog/security1/">Security Proofs #1: Motivation and Preliminaries</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/firstpost/">This is my first post.</a></li>
 </ul>
 
 			</heading-anchors>
 		</main>
 
-		<!-- This page `/blog/firstpost/` was built on 2026-06-16T04:10:30.255Z -->
+		<!-- This page `/blog/security1/` was built on 2026-06-16T04:10:30.255Z -->
 		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
 	</body>
 </html>
