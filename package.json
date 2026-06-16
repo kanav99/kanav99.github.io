@@ -49,6 +49,7 @@
 		"zod-validation-error": "^3.5.2"
 	},
 	"dependencies": {
+		"@mdit/plugin-katex": "^0.25.2",
 		"@zachleat/heading-anchors": "^1.0.5"
 	}
 }
