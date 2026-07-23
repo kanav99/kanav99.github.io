@@ -49,7 +49,10 @@
 		"zod-validation-error": "^3.5.2"
 	},
 	"dependencies": {
+		"@11ty/eleventy-fetch": "^5.1.0",
 		"@mdit/plugin-katex": "^0.25.2",
-		"@zachleat/heading-anchors": "^1.0.5"
+		"@zachleat/heading-anchors": "^1.0.5",
+		"domutils": "^2.8.0",
+		"htmlparser2": "^7.1.1"
 	}
 }

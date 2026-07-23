@@ -12,4 +12,18 @@ Previously, I used to work with [Dr. Divya Gupta](https://www.microsoft.com/en-u
 
 Email: [firstname]@umd.edu
 
-My [Research](https://scholar.google.com/citations?hl=en&user=QEFy_4wAAAAJ)
+## Publications
+
+_Pulled from my [Google Scholar profile](https://scholar.google.com/citations?hl=en&user=QEFy_4wAAAAJ)._
+
+<ul class="publications-list">
+{%- for pub in publications %}
+	<li>
+		<a href="{{ pub.url }}">{{ pub.title }}</a>
+		<div class="pub-authors">{{ pub.authors }}</div>
+		<div class="pub-venue">{{ pub.venue }}{% if pub.venue %}, {% endif %}{{ pub.year }}</div>
+	</li>
+{%- else %}
+	<li>(Publications unavailable right now — see the Scholar profile above.)</li>
+{%- endfor %}
+</ul>
