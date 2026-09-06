@@ -1,0 +1,27 @@
+---
+title: Papers I loved
+description: A running list of papers I have loved reading.
+---
+<h1>Papers I loved</h1>
+
+{%- for section in papers %}
+<h2>{{ section.name }}</h2>
+<ul class="papers-list">
+	{%- for paper in section.papers %}
+	<li>
+		{% if paper.url %}<a href="{{ paper.url }}">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}
+		{%- if paper.authors %}
+		<div class="paper-authors">{{ paper.authors }}</div>
+		{%- endif %}
+		{%- if paper.venue or paper.year %}
+		<div class="paper-venue">{{ paper.venue }}{% if paper.venue and paper.year %}, {% endif %}{{ paper.year }}</div>
+		{%- endif %}
+		{%- if paper.note %}
+		<div class="paper-note">{{ paper.note }}</div>
+		{%- endif %}
+	</li>
+	{%- else %}
+	<li>(Nothing here yet.)</li>
+	{%- endfor %}
+</ul>
+{%- endfor %}

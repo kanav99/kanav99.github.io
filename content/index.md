@@ -27,3 +27,7 @@ _Pulled from my [Google Scholar profile](https://scholar.google.com/citations?hl
 	<li>(Publications unavailable right now — see the Scholar profile above.)</li>
 {%- endfor %}
 </ul>
+
+## Links
+
+- [Papers I loved](/papers/)

@@ -296,8 +296,26 @@ header {
 	margin-right: 1em;
 }
 
-img[alt=meimg] { 
-	float: right; 
+img[alt=meimg] {
+	float: right;
 	width: 30%;
 	margin: 0 0 1em 1em;
+}
+
+/* Papers list */
+.papers-list {
+	list-style: none;
+	padding: 0;
+}
+.papers-list > li {
+	margin-bottom: 1em;
+}
+.paper-authors,
+.paper-venue {
+	font-size: 0.875em; /* 14px /16 */
+	color: var(--color-gray-90);
+}
+.paper-note {
+	font-size: 0.875em;
+	font-style: italic;
 }
