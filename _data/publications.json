@@ -1,5 +1,12 @@
 [
 	{
+		"title": "Private and Verifiable Outsourcing of Open-Weight LLM Inference",
+		"url": "https://eprint.iacr.org/2026/1849",
+		"authors": "Kanav Gupta, Jonathan Katz, Ian Miers",
+		"venue": "Cryptology ePrint Archive",
+		"year": "2026"
+	},
+	{
 		"title": "Deploying decryption oracles for fun and non-profit: Backing up with friends and TEEs",
 		"url": "https://eprint.iacr.org/2026/800",
 		"authors": "Kanav Gupta, Gabriel Kaptchuk, Ian Miers",
