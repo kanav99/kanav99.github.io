@@ -1,0 +1,37 @@
+[
+	{
+		"title": "Deploying decryption oracles for fun and non-profit: Backing up with friends and TEEs",
+		"url": "https://eprint.iacr.org/2026/800",
+		"authors": "Kanav Gupta, Gabriel Kaptchuk, Ian Miers",
+		"venue": "Cryptology ePrint Archive",
+		"year": "2026"
+	},
+	{
+		"title": "SHARK: Actively Secure Inference Using Function Secret Sharing",
+		"url": "https://doi.org/10.1109/SP61157.2025.00175",
+		"authors": "Kanav Gupta, Nishanth Chandran, Divya Gupta, Jonathan Katz, Rahul Sharma",
+		"venue": "IEEE S&P",
+		"year": "2025"
+	},
+	{
+		"title": "Orca: FSS-based Secure Training and Inference with GPUs",
+		"url": "https://doi.org/10.1109/SP54263.2024.00063",
+		"authors": "Neha Jawalkar, Kanav Gupta, Arkaprava Basu, Nishanth Chandran, Divya Gupta, Rahul Sharma",
+		"venue": "IEEE S&P",
+		"year": "2024"
+	},
+	{
+		"title": "SIGMA: Secure GPT Inference with Function Secret Sharing",
+		"url": "https://doi.org/10.56553/popets-2024-0107",
+		"authors": "Kanav Gupta, Neha Jawalkar, Ananta Mukherjee, Nishanth Chandran, Divya Gupta, Ashish Panwar, Rahul Sharma",
+		"venue": "PETS",
+		"year": "2024"
+	},
+	{
+		"title": "LLAMA: A Low Latency Math Library for Secure Inference",
+		"url": "https://doi.org/10.56553/popets-2022-0109",
+		"authors": "Kanav Gupta, Deepak Kumaraswamy, Nishanth Chandran, Divya Gupta",
+		"venue": "PETS",
+		"year": "2022"
+	}
+]
