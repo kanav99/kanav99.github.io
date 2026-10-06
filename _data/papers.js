@@ -22,7 +22,7 @@ export default [
 				authors: "Karla Friedrichs, Anja Lehmann, Cavit Özbay",
 				venue: "ASIACRYPT",
 				year: "2025",
-				note: "super interesting work on OPRFs that is both a charm to read and treats security like a first class citizen."
+				note: "super interesting work on OPRFs that is both a charm to read and treats security as a priority."
 			},
 			{
 				title: "Lightweight Techniques for Private Heavy Hitters",
