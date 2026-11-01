@@ -1,7 +1,7 @@
 ---
 title: "Dupont on Halloween"
 description: Dupont on Halloween
-date: 2026-10-30
+date: 2026-10-31
 ---
 
 I experienced DC on halloween for the first time. In my previous years in US, I stayed inside my home in College Park. My stupid little walk for my stupid little mental health took me a little too far this time - to Dupont Circle.
