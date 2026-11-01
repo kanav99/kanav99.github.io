@@ -5,7 +5,7 @@
   <subtitle>This is a longer description about your blog.</subtitle>
   <link href="https://example.com/feed/feed.xml" rel="self" />
   <link href="https://example.com/" />
-  <updated>2026-10-30T00:00:00Z</updated>
+  <updated>2026-10-31T00:00:00Z</updated>
   <id>https://example.com/</id>
   <author>
     <name>Your Name</name>
@@ -13,7 +13,7 @@
   <entry>
     <title>Dupont on Halloween</title>
     <link href="https://example.com/blog/26-10-31/dupont/" />
-    <updated>2026-10-30T00:00:00Z</updated>
+    <updated>2026-10-31T00:00:00Z</updated>
     <id>https://example.com/blog/26-10-31/dupont/</id>
     <content type="html">&lt;p&gt;I experienced DC on halloween for the first time. In my previous years in US, I stayed inside my home in College Park. My stupid little walk for my stupid little mental health took me a little too far this time - to Dupont Circle.&lt;/p&gt;
 &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/blog/26-10-31/dupont/1HkYg5pTSp-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/blog/26-10-31/dupont/1HkYg5pTSp-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/blog/26-10-31/dupont/1HkYg5pTSp-768.jpeg&quot; alt=&quot;&quot; style=&quot;display: block; width: 400px; max-width: 100%; height: auto; margin-inline: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
