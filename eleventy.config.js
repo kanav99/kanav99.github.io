@@ -4,11 +4,48 @@ import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import markdownIt from "markdown-it";
+import fs from "node:fs/promises";
+import path from "node:path";
 
 import pluginFilters from "./_config/filters.js";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function(eleventyConfig) {
+	// Unpublished blog posts are excluded from pages, collections, and feeds.
+	eleventyConfig.addPreprocessor("published", "md", (data) => {
+		if (data.page.inputPath.startsWith("./content/blog/") && data.published === false) {
+			return false;
+		}
+	});
+
+	// Eleventy keeps old output files when a previously published post is skipped.
+	// Remove generated blog pages that are absent from the current full build.
+	eleventyConfig.on("eleventy.after", async ({ directories, results, incremental, outputMode }) => {
+		if (incremental || outputMode !== "fs") return;
+		const written = new Set(results.map(({ outputPath }) => path.resolve(outputPath)));
+		async function removeStalePages(directory) {
+			let entries;
+			try {
+				entries = await fs.readdir(directory, { withFileTypes: true });
+			} catch (error) {
+				if (error.code === "ENOENT") return;
+				throw error;
+			}
+			for (const entry of entries) {
+				const filename = path.join(directory, entry.name);
+				if (entry.isDirectory()) {
+					await removeStalePages(filename);
+				} else if (entry.name.endsWith(".html") && !written.has(path.resolve(filename))) {
+					const html = await fs.readFile(filename, "utf8");
+					if (html.includes("<!-- This page `") && html.includes("` was built on ")) {
+						await fs.unlink(filename);
+					}
+				}
+			}
+		}
+		await removeStalePages(path.join(directories.output, "blog"));
+	});
+
 	// Drafts, see also _data/eleventyDataSchema.js
 	eleventyConfig.addPreprocessor("drafts", "*", (data, content) => {
 		if (data.draft) {

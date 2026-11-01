@@ -50,6 +50,11 @@ $$
 
 These two implications are logically equivalent. If $P$ guarantees $Q$, then $Q$ being false rules out $P$ being true.
 
+<figure style="width: 400px; max-width: 100%; margin: 1.5rem auto; text-align: center;">
+  <img src="tomato.jpeg" alt="Tomato photo." style="display: block; width: 100%; height: auto;">
+  <figcaption style="margin-top: 0.5rem; font-size: 0.875em; font-style: italic;">Existence of tomato implies existence of tomato sauce</figcaption>
+</figure>
+
 In our divisibility example, the contrapositive says that if $n$ is not even, then it is not divisible by four. This follows from the original statement; the converse does not.
 
 Security proofs use this equivalence constantly. We want to prove

@@ -43,6 +43,22 @@ npx @11ty/eleventy --serve
 
 Or you can run [debug mode](https://www.11ty.dev/docs/debugging/) to see all the internals.
 
+## Publishing blog posts
+
+Add `published: false` to a blog Markdown file's YAML front matter to exclude it
+from generated pages, blog listings, and feeds (including local previews):
+
+```yaml
+---
+title: My unfinished post
+date: 2026-10-31
+published: false
+---
+```
+
+Set `published: true` or omit the option to publish the post. Use YAML booleans
+without quotes. The existing `draft` option still applies independently.
+
 ## Features
 
 - Using [Eleventy v3](https://github.com/11ty/eleventy/releases/tag/v3.0.0) with zero-JavaScript output.
