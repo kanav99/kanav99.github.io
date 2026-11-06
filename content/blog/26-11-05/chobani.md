@@ -1,5 +1,5 @@
 ---
-title: "RIP Chobani Extra Creamy Oatmilk"
+title: "Chobani Extra Creamy Oatmilk"
 description:
 date: 2026-11-05
 published: true
