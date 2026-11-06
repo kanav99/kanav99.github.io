@@ -5,11 +5,24 @@
   <subtitle>This is a longer description about your blog.</subtitle>
   <link href="https://example.com/feed/feed.xml" rel="self" />
   <link href="https://example.com/" />
-  <updated>2026-10-31T00:00:00Z</updated>
+  <updated>2026-11-05T00:00:00Z</updated>
   <id>https://example.com/</id>
   <author>
     <name>Your Name</name>
   </author>
+  <entry>
+    <title>RIP Chobani Extra Creamy Oatmilk</title>
+    <link href="https://example.com/blog/26-11-05/chobani/" />
+    <updated>2026-11-05T00:00:00Z</updated>
+    <id>https://example.com/blog/26-11-05/chobani/</id>
+    <content type="html">&lt;p&gt;My heart is heavy today, remembering Chobani Extra Creamy Oatmilk, which, in an unexpected turn of events, got discontinued, along with its inferior brothers. No walmart (except Fairfax one, cant go, no car) no costco would have it on their shelves anymore. Hold tight to your remaining stock, if you still have it. For me, it was a symbol of hope for my bleak work mornings (i.e. every morning).&lt;/p&gt;
+&lt;figure style=&quot;width: 400px; max-width: 100%; margin: 1.5rem auto; text-align: center;&quot;&gt;
+  &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/blog/26-11-05/chobani/jK38FrlaBI-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/blog/26-11-05/chobani/jK38FrlaBI-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/blog/26-11-05/chobani/jK38FrlaBI-768.jpeg&quot; alt=&quot;Chobani Barista Edition&quot; style=&quot;display: block; width: 100%; height: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
+  &lt;figcaption style=&quot;margin-top: 0.5rem; font-size: 0.875em; font-style: italic;&quot;&gt;Last public spotting of a family member in Chinatown, DC&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;My gut is heavy too, with the mid-ass planet oat oatmilk I had to drink.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Dupont on Halloween</title>
     <link href="https://example.com/blog/26-10-31/dupont/" />
