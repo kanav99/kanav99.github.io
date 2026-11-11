@@ -2,7 +2,8 @@
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:atom="http://www.w3.org/2005/Atom"
-  exclude-result-prefixes="atom">
+  xmlns:media="http://search.yahoo.com/mrss/"
+  exclude-result-prefixes="atom media">
   <xsl:output method="html" encoding="UTF-8" indent="yes"/>
 
   <xsl:template match="/atom:feed">
@@ -45,6 +46,7 @@
           a:hover { text-decoration-thickness: 2px; }
           a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
           header { padding-bottom: 1.5rem; border-bottom: 1px dashed var(--border); }
+          .post-image { display: block; width: 100%; max-height: 20rem; object-fit: cover; margin-bottom: 1rem; border-radius: .5rem; }
           h1 { margin: .75rem 0 0; font-size: clamp(1.75rem, 5vw, 2.25rem); line-height: 1.2; }
           h2 { font-size: 1.25rem; }
           h3 { margin: 0 0 .25rem; font-size: 1.2rem; line-height: 1.4; }
@@ -84,6 +86,9 @@
   <xsl:template match="atom:entry">
     <li>
       <article>
+        <xsl:if test="media:thumbnail">
+          <img class="post-image" src="{media:thumbnail/@url}" alt="" loading="lazy"/>
+        </xsl:if>
         <h3><a href="{atom:link[not(@rel) or @rel='alternate'][1]/@href}"><xsl:value-of select="atom:title"/></a></h3>
         <time datetime="{atom:updated}"><xsl:value-of select="substring(atom:updated, 1, 10)"/></time>
       </article>
