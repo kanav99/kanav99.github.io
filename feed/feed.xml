@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="pretty-atom-feed.xsl" type="text/xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-  <title>Blog Title</title>
-  <subtitle>This is a longer description about your blog.</subtitle>
-  <link href="https://example.com/feed/feed.xml" rel="self" />
-  <link href="https://example.com/" />
+  <title>Kanav&#39;s Personal Page</title>
+  <subtitle>crypto, math and philosophy</subtitle>
+  <link href="https://kanav99.github.io/feed/feed.xml" rel="self" />
+  <link href="https://kanav99.github.io/" />
   <updated>2026-11-08T00:00:00Z</updated>
-  <id>https://example.com/</id>
+  <id>https://kanav99.github.io/</id>
   <author>
-    <name>Your Name</name>
+    <name>Kanav Gupta</name>
+    <email>kanav0610@gmail.com</email>
   </author>
   <entry>
     <title>Blood test</title>
-    <link href="https://example.com/blog/26-11-08/cbc-tsh-lft/" />
+    <link href="https://kanav99.github.io/blog/26-11-08/cbc-tsh-lft/" />
     <updated>2026-11-08T00:00:00Z</updated>
-    <id>https://example.com/blog/26-11-08/cbc-tsh-lft/</id>
+    <id>https://kanav99.github.io/blog/26-11-08/cbc-tsh-lft/</id>
     <content type="html">&lt;p&gt;I have a blood test tomorrow. Even though I am a big man now (i drink protein shake everyday), I still feel a little bit of terror thinking about needles.&lt;/p&gt;
 &lt;p&gt;This fear though, represents my privilege; a privilege that I dont have to deal with needles enough to not fear them. I feel grateful for this fear.&lt;/p&gt;
 &lt;!-- This also serves as an irrefutable evidence that I dont do drugs. QED --&gt;
 &lt;figure style=&quot;width: 400px; max-width: 100%; margin: 1.5rem auto; text-align: center;&quot;&gt;
-  &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/blog/26-11-08/cbc-tsh-lft/hCDTMBSjgw-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/blog/26-11-08/cbc-tsh-lft/hCDTMBSjgw-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/blog/26-11-08/cbc-tsh-lft/hCDTMBSjgw-768.jpeg&quot; alt=&quot;grilled cheese&quot; style=&quot;display: block; width: 100%; height: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
+  &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://kanav99.github.io/blog/26-11-08/cbc-tsh-lft/hCDTMBSjgw-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://kanav99.github.io/blog/26-11-08/cbc-tsh-lft/hCDTMBSjgw-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://kanav99.github.io/blog/26-11-08/cbc-tsh-lft/hCDTMBSjgw-768.jpeg&quot; alt=&quot;grilled cheese&quot; style=&quot;display: block; width: 100%; height: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
   &lt;figcaption style=&quot;margin-top: 0.5rem; font-size: 0.875em; font-style: italic;&quot;&gt;I cooked (if you can call making grilled cheese cooking) after more than a month. It tasted so good that I took one more picture of the half eaten sandwich, but you probably dont want to see that.&lt;/figcaption&gt;
 &lt;/figure&gt;
 </content>
   </entry>
   <entry>
     <title>Chobani Extra Creamy Oatmilk</title>
-    <link href="https://example.com/blog/26-11-05/chobani/" />
+    <link href="https://kanav99.github.io/blog/26-11-05/chobani/" />
     <updated>2026-11-05T00:00:00Z</updated>
-    <id>https://example.com/blog/26-11-05/chobani/</id>
+    <id>https://kanav99.github.io/blog/26-11-05/chobani/</id>
     <content type="html">&lt;p&gt;My heart is heavy today, remembering Chobani Extra Creamy Oatmilk, which, in an unexpected turn of events, got discontinued, along with its inferior brothers. No walmart (except Fairfax one, cant go, no car) no costco would have it on their shelves anymore. Hold tight to your remaining stock, if you still have it. For me, it was a symbol of hope for my bleak work mornings (i.e. every morning).&lt;/p&gt;
 &lt;figure style=&quot;width: 400px; max-width: 100%; margin: 1.5rem auto; text-align: center;&quot;&gt;
-  &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/blog/26-11-05/chobani/jK38FrlaBI-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/blog/26-11-05/chobani/jK38FrlaBI-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/blog/26-11-05/chobani/jK38FrlaBI-768.jpeg&quot; alt=&quot;Chobani Barista Edition&quot; style=&quot;display: block; width: 100%; height: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
+  &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://kanav99.github.io/blog/26-11-05/chobani/jK38FrlaBI-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://kanav99.github.io/blog/26-11-05/chobani/jK38FrlaBI-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://kanav99.github.io/blog/26-11-05/chobani/jK38FrlaBI-768.jpeg&quot; alt=&quot;Chobani Barista Edition&quot; style=&quot;display: block; width: 100%; height: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
   &lt;figcaption style=&quot;margin-top: 0.5rem; font-size: 0.875em; font-style: italic;&quot;&gt;Last public spotting of a family member in Chinatown, DC&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;p&gt;My gut is heavy too, with the mid-ass planet oat oatmilk I had to drink.&lt;/p&gt;
@@ -39,29 +40,29 @@
   </entry>
   <entry>
     <title>Dupont on Halloween</title>
-    <link href="https://example.com/blog/26-10-31/dupont/" />
+    <link href="https://kanav99.github.io/blog/26-10-31/dupont/" />
     <updated>2026-10-31T00:00:00Z</updated>
-    <id>https://example.com/blog/26-10-31/dupont/</id>
+    <id>https://kanav99.github.io/blog/26-10-31/dupont/</id>
     <content type="html">&lt;p&gt;I experienced DC on halloween for the first time. In my previous years in US, I stayed inside my home in College Park. My stupid little walk for my stupid little mental health took me a little too far this time - to Dupont Circle.&lt;/p&gt;
-&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/blog/26-10-31/dupont/1HkYg5pTSp-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/blog/26-10-31/dupont/1HkYg5pTSp-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/blog/26-10-31/dupont/1HkYg5pTSp-768.jpeg&quot; alt=&quot;&quot; style=&quot;display: block; width: 400px; max-width: 100%; height: auto; margin-inline: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://kanav99.github.io/blog/26-10-31/dupont/1HkYg5pTSp-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://kanav99.github.io/blog/26-10-31/dupont/1HkYg5pTSp-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://kanav99.github.io/blog/26-10-31/dupont/1HkYg5pTSp-768.jpeg&quot; alt=&quot;&quot; style=&quot;display: block; width: 400px; max-width: 100%; height: auto; margin-inline: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
 &lt;p&gt;The main attraction were the costumes themselves: I saw people dressed as forrest gump and the following reporters, ash ketchum with pikachu, starbucks barista, women of bridgerton, luigi (mangione) and luigi (from mario), breathalyzer (very scary), waldo (I found two waldos on two days; wasnt the whole point to be hard to find?) and the best of all: a literal dick. The best part about these costumes was that it didnt feel like people dressed just for the sake of it: it seemed that they were just doing whatever they do everyday: running, jogging, walking dogs.&lt;/p&gt;
 
 &lt;div class=&quot;dupont-costume-images&quot;&gt;
-  &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/blog/26-10-31/dupont/CaiyGU9bMj-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/blog/26-10-31/dupont/CaiyGU9bMj-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/blog/26-10-31/dupont/CaiyGU9bMj-768.jpeg&quot; alt=&quot;A person wearing a phallic Halloween costume, with their face blurred.&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
-  &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/blog/26-10-31/dupont/bTHPRutDh0-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/blog/26-10-31/dupont/bTHPRutDh0-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/blog/26-10-31/dupont/bTHPRutDh0-768.jpeg&quot; alt=&quot;A person dressed as Ash Ketchum for Halloween.&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
+  &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://kanav99.github.io/blog/26-10-31/dupont/CaiyGU9bMj-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://kanav99.github.io/blog/26-10-31/dupont/CaiyGU9bMj-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://kanav99.github.io/blog/26-10-31/dupont/CaiyGU9bMj-768.jpeg&quot; alt=&quot;A person wearing a phallic Halloween costume, with their face blurred.&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
+  &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://kanav99.github.io/blog/26-10-31/dupont/bTHPRutDh0-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://kanav99.github.io/blog/26-10-31/dupont/bTHPRutDh0-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://kanav99.github.io/blog/26-10-31/dupont/bTHPRutDh0-768.jpeg&quot; alt=&quot;A person dressed as Ash Ketchum for Halloween.&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
 &lt;/div&gt;
 &lt;p&gt;For some side quests, I visited Kramers bookstore for the first time. The book that I found interesting was &lt;a href=&quot;https://www.goodreads.com/en/book/show/223338921-the-lucky-ride&quot;&gt;The Lucky Ride&lt;/a&gt;; it was selling for $24, so I resorted to my trustee good-old AbeBooks. Sorry Kramers!&lt;/p&gt;
-&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/blog/26-10-31/dupont/nBG5_A_8r8-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/blog/26-10-31/dupont/nBG5_A_8r8-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/blog/26-10-31/dupont/nBG5_A_8r8-768.jpeg&quot; alt=&quot;&quot; style=&quot;display: block; width: 400px; max-width: 100%; height: auto; margin-inline: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://kanav99.github.io/blog/26-10-31/dupont/nBG5_A_8r8-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://kanav99.github.io/blog/26-10-31/dupont/nBG5_A_8r8-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://kanav99.github.io/blog/26-10-31/dupont/nBG5_A_8r8-768.jpeg&quot; alt=&quot;&quot; style=&quot;display: block; width: 400px; max-width: 100%; height: auto; margin-inline: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
 &lt;p&gt;I also picked up Cardamom Chai and Almond Croissant from &lt;a href=&quot;https://afghanchai.com/pages/about-us-our-qissa&quot;&gt;Afghan Chai&lt;/a&gt;. The owners (amazing people!) assumed that I have been there before (assuming because of my too-indian appearance and accent) and let me pick on my own; I played along as well. If you go there for the first time, they would let you taste both of their teas: Cardamom and Oatmilk, then give you an option to get either or half/half, hot or cold and optionally make it dirty i.e. add espresso to it. I love oatmilk chai as well; going to be my pick for the next time.&lt;/p&gt;
-&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/blog/26-10-31/dupont/OnMjDkmy1p-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/blog/26-10-31/dupont/OnMjDkmy1p-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/blog/26-10-31/dupont/OnMjDkmy1p-768.jpeg&quot; alt=&quot;&quot; style=&quot;display: block; width: 400px; max-width: 100%; height: auto; margin-inline: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://kanav99.github.io/blog/26-10-31/dupont/OnMjDkmy1p-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://kanav99.github.io/blog/26-10-31/dupont/OnMjDkmy1p-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://kanav99.github.io/blog/26-10-31/dupont/OnMjDkmy1p-768.jpeg&quot; alt=&quot;&quot; style=&quot;display: block; width: 400px; max-width: 100%; height: auto; margin-inline: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
 &lt;p&gt;Came home to a sleeping &lt;a href=&quot;https://www.petfinder.com/cat/pongo-d1f12d3c-a089-4245-a404-600a11891eac/md/hyattsville/a-cats-life-rescue-md492/details/&quot;&gt;Pongo&lt;/a&gt;: dude didn&#39;t budge on my arrival. Hope you learns to love me back sometime (sigh).&lt;/p&gt;
 </content>
   </entry>
   <entry>
     <title>Security Proofs #1: Motivation and Preliminaries</title>
-    <link href="https://example.com/blog/security1/" />
+    <link href="https://kanav99.github.io/blog/security1/" />
     <updated>2026-06-14T00:00:00Z</updated>
-    <id>https://example.com/blog/security1/</id>
+    <id>https://kanav99.github.io/blog/security1/</id>
     <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;You might already know what encryption, digital signatures, or homomorphic encryption do. But what does it mean to say that one of these constructions is &lt;em&gt;secure&lt;/em&gt;? Secure against whom? What counts as a successful attack? And how can we prove something about attacks nobody has thought of yet?&lt;/p&gt;
 &lt;p&gt;A security proof starts by making those questions precise. We specify what an attacker can do and what it means for the attacker to win. Then we show that an attacker who wins too often would give us an algorithm for a problem we assume is hard.&lt;/p&gt;
@@ -86,7 +87,7 @@
 &lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;These two implications are logically equivalent. If &lt;span class=&quot;katex&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;P&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt; guarantees &lt;span class=&quot;katex&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;Q&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;Q&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;, then &lt;span class=&quot;katex&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;Q&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;Q&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt; being false rules out &lt;span class=&quot;katex&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;P&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt; being true.&lt;/p&gt;
 &lt;figure style=&quot;width: 400px; max-width: 100%; margin: 1.5rem auto; text-align: center;&quot;&gt;
-  &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/blog/security1/76WLh_Z--0-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/blog/security1/76WLh_Z--0-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/blog/security1/76WLh_Z--0-768.jpeg&quot; alt=&quot;Tomato photo.&quot; style=&quot;display: block; width: 100%; height: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
+  &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://kanav99.github.io/blog/security1/76WLh_Z--0-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://kanav99.github.io/blog/security1/76WLh_Z--0-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://kanav99.github.io/blog/security1/76WLh_Z--0-768.jpeg&quot; alt=&quot;Tomato photo.&quot; style=&quot;display: block; width: 100%; height: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
   &lt;figcaption style=&quot;margin-top: 0.5rem; font-size: 0.875em; font-style: italic;&quot;&gt;Existence of tomato implies existence of tomato sauce&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;p&gt;In our divisibility example, the contrapositive says that if &lt;span class=&quot;katex&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;n&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt; is not even, then it is not divisible by four. This follows from the original statement; the converse does not.&lt;/p&gt;
@@ -244,9 +245,9 @@
   </entry>
   <entry>
     <title>This is my first post.</title>
-    <link href="https://example.com/blog/firstpost/" />
+    <link href="https://kanav99.github.io/blog/firstpost/" />
     <updated>2025-11-27T00:00:00Z</updated>
-    <id>https://example.com/blog/firstpost/</id>
+    <id>https://kanav99.github.io/blog/firstpost/</id>
     <content type="html">&lt;p&gt;Hello, this is my first blog post!&lt;/p&gt;
 &lt;p&gt;Happy Thanksgiving 🦃&lt;/p&gt;
 </content>
