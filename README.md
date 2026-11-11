@@ -2,6 +2,14 @@
 
 A starter repository showing how to build a blog with the [Eleventy](https://www.11ty.dev/) site generator (using the [v3.0 release](https://github.com/11ty/eleventy/releases/tag/v3.0.0)).
 
+## Deploying this blog
+
+- `npm run build-ghpages` builds for `https://kanav99.github.io/`. Pushing to `default` runs this build and deploys through GitHub Actions.
+- `npm run build-umd` builds for `https://cs.umd.edu/~kanav/` without uploading.
+- `npm run build-deploy-umd` runs the UMD build and uploads it to the existing UMD web directory.
+
+The UMD build sets `SITE_ORIGIN` and Eleventy's path prefix together. Keep `SITE_ORIGIN` as the domain only; the URL filters add `/~kanav/` to feed links, images, and sitemap URLs.
+
 ## Getting Started
 
 * [Want a more generic/detailed getting started guide?](https://www.11ty.dev/docs/getting-started/)

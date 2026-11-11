@@ -6,9 +6,9 @@
 	"scripts": {
 		"build": "npx @11ty/eleventy",
 		"build-nocolor": "cross-env NODE_DISABLE_COLORS=1 npx @11ty/eleventy",
-		"build-umd": "npx @11ty/eleventy --pathprefix=/~kanav/",
-		"build-ghpages": "npx @11ty/eleventy --pathprefix=/",
-		"build-deploy-umd": "npx @11ty/eleventy --pathprefix=/~kanav/ && scp -r _site/* kanav@junkfood.cs.umd.edu:/fs/wwwusers/kanav/",
+		"build-umd": "cross-env SITE_ORIGIN=https://cs.umd.edu/ eleventy --pathprefix=/~kanav/",
+		"build-ghpages": "eleventy --pathprefix=/",
+		"build-deploy-umd": "npm run build-umd && scp -r _site/* kanav@junkfood.cs.umd.edu:/fs/wwwusers/kanav/",
 		"start": "npx @11ty/eleventy --serve --quiet",
 		"start-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/ --serve --quiet",
 		"debug": "cross-env DEBUG=Eleventy* npx @11ty/eleventy",
@@ -44,6 +44,8 @@
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
 		"cross-env": "^7.0.3",
 		"luxon": "^3.6.1",
+		"posthtml-parser": "^0.11.0",
+		"posthtml-render": "^3.0.0",
 		"prismjs": "^1.30.0",
 		"zod": "^3.25.67",
 		"zod-validation-error": "^3.5.2"
