@@ -537,6 +537,10 @@ pre[class*="language-diff-"] {
 <h2 id="public-key-encryption">Public-Key Encryption</h2>
 <p>Suppose Alice wants to send Bob a private message. In <strong>public-key encryption</strong>, Bob generates two keys. He publishes one, called the <strong>public key</strong>, and keeps the other, called the <strong>secret key</strong>, to himself. Alice uses the public key to turn her message into a ciphertext. Bob uses his secret key to turn the ciphertext back into the message.</p>
 <p>Anyone who has Bob's public key can send him an encrypted message, including someone who has never talked to Bob before. An eavesdropper can have the very same public key and see the ciphertext. What should it mean for Alice's message to stay private in that situation?</p>
+<figure style="width: 400px; max-width: 100%; margin: 1.5rem auto; text-align: center;">
+  <picture><source type="image/avif" srcset="/blog/26-11-22/security2/ebWKu6PnoI-3024.avif 3024w"><source type="image/webp" srcset="/blog/26-11-22/security2/ebWKu6PnoI-3024.webp 3024w"><img loading="lazy" decoding="async" src="/blog/26-11-22/security2/ebWKu6PnoI-3024.jpeg" alt="Tomato photo." style="display: block; width: 100%; height: auto;" width="3024" height="4032"></picture>
+  <figcaption style="margin-top: 0.5rem; font-size: 0.875em; font-style: italic;">A grafitti about hope by anonymous lab member. Hope all your security proofs go through.</figcaption>
+</figure>
 <h2 id="the-security-game">The Security Game</h2>
 <p>A <strong>security game</strong> is an experiment between an attacker and a challenger. The challenger runs the experiment and keeps track of the secrets. The rules specify what the attacker sees, what it can do, and what counts as winning.</p>
 <p>Here is the game for <strong>indistinguishability under chosen-plaintext attack</strong>, or <strong>IND-CPA</strong>, for public-key encryption:</p>
@@ -604,7 +608,7 @@ pre[class*="language-diff-"] {
 			</heading-anchors>
 		</main>
 
-		<!-- This page `/blog/26-11-22/security2/` was built on 2026-11-22T23:50:26.639Z -->
+		<!-- This page `/blog/26-11-22/security2/` was built on 2026-11-22T23:53:25.797Z -->
 		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
 	</body>
 </html>

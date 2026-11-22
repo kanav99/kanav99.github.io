@@ -18,9 +18,9 @@
     <link href="https://kanav99.github.io/blog/26-11-22/security2/" />
     <updated>2026-11-22T00:00:00Z</updated>
     <id>https://kanav99.github.io/blog/26-11-22/security2/</id>
-    <media:content url="https://kanav99.github.io/images/feed-photo.jpeg" medium="image" isDefault="true" />
-    <media:thumbnail url="https://kanav99.github.io/images/feed-photo.jpeg" />
-    <content type="html">&lt;p&gt;&lt;img src=&quot;https://kanav99.github.io/images/feed-photo.jpeg&quot; alt=&quot;Pongo sleeping on the couch&quot;&gt;&lt;/p&gt;&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+    <media:content url="https://kanav99.github.io/blog/26-11-22/security2/ebWKu6PnoI-3024.jpeg" medium="image" isDefault="true" />
+    <media:thumbnail url="https://kanav99.github.io/blog/26-11-22/security2/ebWKu6PnoI-3024.jpeg" />
+    <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Suppose you pick two messages and I encrypt one of them. I show you the ciphertext. Can you tell which message I chose?&lt;/p&gt;
 &lt;p&gt;You already know both possible messages, so asking whether you can recover the message would be a rather weird way to measure security. The question is whether the ciphertext helps you tell the two possibilities apart.&lt;/p&gt;
 &lt;p&gt;In &lt;a href=&quot;https://kanav99.github.io/blog/security1/&quot;&gt;Part 1&lt;/a&gt;, the reduction had a short job. It handed the attacker a Diffie–Hellman transcript and returned whatever shared secret the attacker recovered. Recovering the secret was already the answer to the computational Diffie–Hellman problem.&lt;/p&gt;
@@ -29,6 +29,10 @@
 &lt;h2 id=&quot;public-key-encryption&quot;&gt;Public-Key Encryption&lt;/h2&gt;
 &lt;p&gt;Suppose Alice wants to send Bob a private message. In &lt;strong&gt;public-key encryption&lt;/strong&gt;, Bob generates two keys. He publishes one, called the &lt;strong&gt;public key&lt;/strong&gt;, and keeps the other, called the &lt;strong&gt;secret key&lt;/strong&gt;, to himself. Alice uses the public key to turn her message into a ciphertext. Bob uses his secret key to turn the ciphertext back into the message.&lt;/p&gt;
 &lt;p&gt;Anyone who has Bob&#39;s public key can send him an encrypted message, including someone who has never talked to Bob before. An eavesdropper can have the very same public key and see the ciphertext. What should it mean for Alice&#39;s message to stay private in that situation?&lt;/p&gt;
+&lt;figure style=&quot;width: 400px; max-width: 100%; margin: 1.5rem auto; text-align: center;&quot;&gt;
+  &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://kanav99.github.io/blog/26-11-22/security2/ebWKu6PnoI-3024.avif 3024w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://kanav99.github.io/blog/26-11-22/security2/ebWKu6PnoI-3024.webp 3024w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://kanav99.github.io/blog/26-11-22/security2/ebWKu6PnoI-3024.jpeg&quot; alt=&quot;Tomato photo.&quot; style=&quot;display: block; width: 100%; height: auto;&quot; width=&quot;3024&quot; height=&quot;4032&quot;&gt;&lt;/picture&gt;
+  &lt;figcaption style=&quot;margin-top: 0.5rem; font-size: 0.875em; font-style: italic;&quot;&gt;&lt;small&gt;&lt;em&gt;A grafitti about hope by anonymous lab member. Hope all your security proofs go through.&lt;/em&gt;&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
 &lt;h2 id=&quot;the-security-game&quot;&gt;The Security Game&lt;/h2&gt;
 &lt;p&gt;A &lt;strong&gt;security game&lt;/strong&gt; is an experiment between an attacker and a challenger. The challenger runs the experiment and keeps track of the secrets. The rules specify what the attacker sees, what it can do, and what counts as winning.&lt;/p&gt;
 &lt;p&gt;Here is the game for &lt;strong&gt;indistinguishability under chosen-plaintext attack&lt;/strong&gt;, or &lt;strong&gt;IND-CPA&lt;/strong&gt;, for public-key encryption:&lt;/p&gt;
