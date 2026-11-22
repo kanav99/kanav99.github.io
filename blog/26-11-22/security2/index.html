@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="google-site-verification" content="37QN2G4dhBlWX_eohFNwgnw7arvAC7rNzlPV56X6jqc">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Security Proofs #2: Security Games and ElGamal</title>
+		<meta name="description" content="A first look at security games and a proof of ElGamal encryption under the decisional Diffie–Hellman assumption.">
+		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Kanav&#39;s Personal Page">
+		
+		
+		
+		<style>/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #082840; /* #5f2b48 */
+	--text-color-link-visited: #082840; /* #17050F */
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #1493fb; /* #6969f7 */
+		--text-color-link-visited: #1493fb; /* #a6a6f8 */
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 50em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden:not(:focus):not(:active) {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img{
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+video,
+iframe {
+	width: 100%;
+	height: auto;
+}
+iframe {
+	aspect-ratio: 16/9;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+
+#skip-link {
+	text-decoration: none;
+	background: var(--background-color);
+	color: var(--text-color);
+	padding: 0.5rem 1rem;
+	border: 1px solid var(--color-gray-90);
+	border-radius: 2px;
+}
+
+/* Prevent visually-hidden skip link fom pushing content around when focused */
+#skip-link.visually-hidden:focus {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	/* Ensure it is positioned on top of everything else when it is shown */
+	z-index: 999;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	flex-grow: 1;
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	gap: .5em 1em;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	counter-reset: start-from var(--postlist-index);
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}
+
+img[alt=meimg] {
+	float: right;
+	width: 30%;
+	margin: 0 0 1em 1em;
+}
+
+/* Papers list */
+.papers-list {
+	list-style: none;
+	padding: 0;
+}
+.papers-list > li {
+	margin-bottom: 1em;
+}
+.paper-authors,
+.paper-venue {
+	font-size: 0.875em; /* 14px /16 */
+	color: var(--color-gray-90);
+}
+.paper-note {
+	font-size: 0.875em;
+	font-style: italic;
+}
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}</style>
+		
+	</head>
+	<body>
+		<a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/" class="home-link">Kanav&#39;s Personal Page</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/">Home</a></li>
+					<li class="nav-item"><a href="/blog/">Blog</a></li>
+					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="main">
+			<heading-anchors>
+				
+
+
+<h1 id="security-proofs-2-security-games-and-elgamal">Security Proofs #2: Security Games and ElGamal</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2026-11-22">22 November 2026</time></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+<p>Suppose you pick two messages and I encrypt one of them. I show you the ciphertext. Can you tell which message I chose?</p>
+<p>You already know both possible messages, so asking whether you can recover the message would be a rather weird way to measure security. The question is whether the ciphertext helps you tell the two possibilities apart.</p>
+<p>In <a href="/blog/security1/">Part 1</a>, the reduction had a short job. It handed the attacker a Diffie–Hellman transcript and returned whatever shared secret the attacker recovered. Recovering the secret was already the answer to the computational Diffie–Hellman problem.</p>
+<p>Here the attacker gives us a guess about which message was encrypted. How do we turn that guess into anything about Diffie–Hellman? The new idea is to run the same experiment with two kinds of ciphertexts. One uses the real Diffie–Hellman value to mask the message. The other uses a random mask, which makes the attacker's guess no better than a coin flip. If the attacker does better with the real ciphertext, that difference gives us a way to tell a real Diffie–Hellman value from a random one.</p>
+<p>We will work through that argument for ElGamal, an encryption scheme built from Diffie–Hellman.</p>
+<h2 id="public-key-encryption">Public-Key Encryption</h2>
+<p>Suppose Alice wants to send Bob a private message. In <strong>public-key encryption</strong>, Bob generates two keys. He publishes one, called the <strong>public key</strong>, and keeps the other, called the <strong>secret key</strong>, to himself. Alice uses the public key to turn her message into a ciphertext. Bob uses his secret key to turn the ciphertext back into the message.</p>
+<p>Anyone who has Bob's public key can send him an encrypted message, including someone who has never talked to Bob before. An eavesdropper can have the very same public key and see the ciphertext. What should it mean for Alice's message to stay private in that situation?</p>
+<h2 id="the-security-game">The Security Game</h2>
+<p>A <strong>security game</strong> is an experiment between an attacker and a challenger. The challenger runs the experiment and keeps track of the secrets. The rules specify what the attacker sees, what it can do, and what counts as winning.</p>
+<p>Here is the game for <strong>indistinguishability under chosen-plaintext attack</strong>, or <strong>IND-CPA</strong>, for public-key encryption:</p>
+<ol>
+<li>The challenger generates a key pair and gives the public key to the attacker.</li>
+<li>The attacker chooses two valid messages <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">m_0</annotation></semantics></math></span> and <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">m_1</annotation></semantics></math></span> of the same length and sends them to the challenger.</li>
+<li>The challenger samples a uniform bit <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>∈</mo><mo stretchy="false">{</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">b \in \{0,1\}</annotation></semantics></math></span> and sends back a fresh encryption of <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">m_b</annotation></semantics></math></span>.</li>
+<li>The attacker outputs a guess <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>b</mi><mo stretchy="true">^</mo></mover></mrow><annotation encoding="application/x-tex">\widehat b</annotation></semantics></math></span>. It wins if <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>b</mi><mo stretchy="true">^</mo></mover><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">\widehat b=b</annotation></semantics></math></span>.</li>
+</ol>
+<p>The attacker gets to choose the messages after seeing the public key. And since it has that key, it can encrypt any other messages itself, before or after it sees the challenge ciphertext.</p>
+<p>Even a random guess wins half the time. We will measure the attacker's <strong>advantage</strong> by how far its win probability is from that baseline:</p>
+<p class="katex-block"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mrow><mi mathvariant="normal">Adv</mi><mo>⁡</mo></mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">N</mi><mi mathvariant="normal">D</mi><mtext>-</mtext><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">A</mi></mrow></msub><mo stretchy="false">(</mo><mi mathvariant="script">A</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true">∣</mo><mi>Pr</mi><mo>⁡</mo><mo stretchy="false">[</mo><mover accent="true"><mi>b</mi><mo stretchy="true">^</mo></mover><mo>=</mo><mi>b</mi><mo stretchy="false">]</mo><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo fence="true">∣</mo></mrow><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\operatorname{Adv}_{\mathrm{IND\text{-}CPA}}(\mathcal A)
+= \left|\Pr[\widehat b=b]-\frac12\right|.
+</annotation></semantics></math></span></p>
+<p>The probability is over key generation, the choice of <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span>, the randomness used to encrypt, and the attacker's own randomness. The scheme is IND-CPA secure if this advantage is negligible for every efficient attacker.</p>
+<p>Why does encryption need fresh randomness? Suppose encryption were deterministic. The attacker could choose two distinct messages, encrypt both with the public key, and compare the results with the challenge ciphertext. Correctness requires the two ciphertexts to be different, so the attacker would win every time.</p>
+<h2 id="elgamal-encryption">ElGamal Encryption</h2>
+<p>We use the same setting as in Part 1. Let <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mo stretchy="false">⟨</mo><mi>g</mi><mo stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">G=\langle g\rangle</annotation></semantics></math></span> be a cyclic group of prime order <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span>. For this version of ElGamal, messages are elements of <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span>.</p>
+<ol>
+<li><strong>Key generation.</strong> Bob samples <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span> uniformly from <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="double-struck">Z</mi><mi>q</mi></msub></mrow><annotation encoding="application/x-tex">\mathbb Z_q</annotation></semantics></math></span> and publishes <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><msup><mi>g</mi><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">X=g^x</annotation></semantics></math></span>. He keeps <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span> secret.</li>
+<li><strong>Encryption.</strong> To encrypt <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span>, Alice samples a fresh uniform <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>∈</mo><msub><mi mathvariant="double-struck">Z</mi><mi>q</mi></msub></mrow><annotation encoding="application/x-tex">r\in\mathbb Z_q</annotation></semantics></math></span> and sends <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo separator="true">,</mo><mi>C</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><msup><mi>g</mi><mi>r</mi></msup><mo separator="true">,</mo><mi>m</mi><msup><mi>X</mi><mi>r</mi></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(Y,C)=(g^r,mX^r)</annotation></semantics></math></span>.</li>
+<li><strong>Decryption.</strong> Bob computes <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Y</mi><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">Y^x</annotation></semantics></math></span> and divides it out of <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span>, recovering <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span>.</li>
+</ol>
+<p>The last step works because <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>Y</mi><mi>x</mi></msup><mo>=</mo><mo stretchy="false">(</mo><msup><mi>g</mi><mi>r</mi></msup><msup><mo stretchy="false">)</mo><mi>x</mi></msup><mo>=</mo><mo stretchy="false">(</mo><msup><mi>g</mi><mi>x</mi></msup><msup><mo stretchy="false">)</mo><mi>r</mi></msup><mo>=</mo><msup><mi>X</mi><mi>r</mi></msup></mrow><annotation encoding="application/x-tex">Y^x=(g^r)^x=(g^x)^r=X^r</annotation></semantics></math></span>. This is the same equality that gave us correctness for Diffie–Hellman. Here the shared value masks the message, and Alice's fresh exponent gives her a fresh mask for each encryption.</p>
+<h2 id="the-assumption">The Assumption</h2>
+<p>The <strong>decisional Diffie–Hellman (DDH) assumption</strong> concerns two ways of sampling a tuple:</p>
+<p class="katex-block"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><mi>g</mi><mo separator="true">,</mo><msup><mi>g</mi><mi>x</mi></msup><mo separator="true">,</mo><msup><mi>g</mi><mi>r</mi></msup><mo separator="true">,</mo><msup><mi>g</mi><mrow><mi>x</mi><mi>r</mi></mrow></msup><mo stretchy="false">)</mo><mspace width="2em"></mspace><mtext>and</mtext><mspace width="2em"></mspace><mo stretchy="false">(</mo><mi>g</mi><mo separator="true">,</mo><msup><mi>g</mi><mi>x</mi></msup><mo separator="true">,</mo><msup><mi>g</mi><mi>r</mi></msup><mo separator="true">,</mo><msup><mi>g</mi><mi>z</mi></msup><mo stretchy="false">)</mo><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">(g,g^x,g^r,g^{xr})
+\qquad\text{and}\qquad
+(g,g^x,g^r,g^z),
+</annotation></semantics></math></span></p>
+<p>where <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>r</mi><mo separator="true">,</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">x,r,z</annotation></semantics></math></span> are independently uniform in <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="double-struck">Z</mi><mi>q</mi></msub></mrow><annotation encoding="application/x-tex">\mathbb Z_q</annotation></semantics></math></span>. The last element is either the shared Diffie–Hellman value or an independent uniform group element. We measure a distinguisher's advantage by the absolute difference between its probabilities of outputting <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span> on the two distributions. The assumption says this difference is negligible for every efficient distinguisher.</p>
+<h2 id="the-reduction">The Reduction</h2>
+<p>Suppose we have an efficient attacker <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">A</mi></mrow><annotation encoding="application/x-tex">\mathcal A</annotation></semantics></math></span> that plays the IND-CPA game for ElGamal. We build a DDH distinguisher <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">R</mi></mrow><annotation encoding="application/x-tex">\mathcal R</annotation></semantics></math></span> using that attacker.</p>
+<ol>
+<li>Receive a DDH challenge <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>g</mi><mo separator="true">,</mo><mi>U</mi><mo separator="true">,</mo><mi>V</mi><mo separator="true">,</mo><mi>T</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(g,U,V,T)</annotation></semantics></math></span> and give <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">A</mi></mrow><annotation encoding="application/x-tex">\mathcal A</annotation></semantics></math></span> the public key <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">X=U</annotation></semantics></math></span>.</li>
+<li>Receive the two messages <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>m</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">m_0,m_1</annotation></semantics></math></span>. Sample a uniform bit <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span> and give <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">A</mi></mrow><annotation encoding="application/x-tex">\mathcal A</annotation></semantics></math></span> the ciphertext <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>V</mi><mo separator="true">,</mo><msub><mi>m</mi><mi>b</mi></msub><mi>T</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(V,m_bT)</annotation></semantics></math></span>.</li>
+<li>Receive the guess <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>b</mi><mo stretchy="true">^</mo></mover></mrow><annotation encoding="application/x-tex">\widehat b</annotation></semantics></math></span>. Output <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span> if <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>b</mi><mo stretchy="true">^</mo></mover><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">\widehat b=b</annotation></semantics></math></span> and <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span> otherwise.</li>
+</ol>
+<p>Notice that <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">R</mi></mrow><annotation encoding="application/x-tex">\mathcal R</annotation></semantics></math></span> can do all this without knowing the exponents behind <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi></mrow><annotation encoding="application/x-tex">U</annotation></semantics></math></span> and <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span>. The challenge gives it the three group elements it needs. What changes between the two cases is what <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span> represents.</p>
+<h3 id="when-tt-is-the-shared-value">When <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span> is the shared value</h3>
+<p>Write <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><msup><mi>g</mi><mi>x</mi></msup></mrow><annotation encoding="application/x-tex">U=g^x</annotation></semantics></math></span> and <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>g</mi><mi>r</mi></msup></mrow><annotation encoding="application/x-tex">V=g^r</annotation></semantics></math></span>. If <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><msup><mi>g</mi><mrow><mi>x</mi><mi>r</mi></mrow></msup></mrow><annotation encoding="application/x-tex">T=g^{xr}</annotation></semantics></math></span>, the ciphertext is</p>
+<p class="katex-block"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><mi>V</mi><mo separator="true">,</mo><msub><mi>m</mi><mi>b</mi></msub><mi>T</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><msup><mi>g</mi><mi>r</mi></msup><mo separator="true">,</mo><msub><mi>m</mi><mi>b</mi></msub><mo stretchy="false">(</mo><msup><mi>g</mi><mi>x</mi></msup><msup><mo stretchy="false">)</mo><mi>r</mi></msup><mo stretchy="false">)</mo><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">(V,m_bT)=(g^r,m_b(g^x)^r).
+</annotation></semantics></math></span></p>
+<p>This is exactly an honest ElGamal encryption of <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">m_b</annotation></semantics></math></span>. The exponents have the right distribution, so <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">A</mi></mrow><annotation encoding="application/x-tex">\mathcal A</annotation></semantics></math></span> sees the real IND-CPA game. The probability that <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">R</mi></mrow><annotation encoding="application/x-tex">\mathcal R</annotation></semantics></math></span> outputs <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span> is the attacker's win probability in that game.</p>
+<h3 id="when-tt-is-uniform">When <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span> is uniform</h3>
+<p>Now <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span> is an independent uniform element of <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span>. Fix the public key, <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span>, and the two messages the attacker chose. For any <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>∈</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">c\in G</annotation></semantics></math></span>, there is exactly one value of <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span> for which <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mi>b</mi></msub><mi>T</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">m_bT=c</annotation></semantics></math></span>, namely <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>m</mi><mi>b</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mi>c</mi></mrow><annotation encoding="application/x-tex">m_b^{-1}c</annotation></semantics></math></span>. Thus <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mi>b</mi></msub><mi>T</mi></mrow><annotation encoding="application/x-tex">m_bT</annotation></semantics></math></span> is uniform for either value of <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span>.</p>
+<p>The attacker sees the same distribution of ciphertexts whichever message was selected. Its guess matches <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span> with probability exactly <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math></span>, so <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">R</mi></mrow><annotation encoding="application/x-tex">\mathcal R</annotation></semantics></math></span> outputs <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span> with probability <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">1/2</annotation></semantics></math></span>.</p>
+<h3 id="putting-the-two-cases-together">Putting the two cases together</h3>
+<p class="katex-block"><span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><msub><mrow><mi mathvariant="normal">Adv</mi><mo>⁡</mo></mrow><mrow><mi mathvariant="normal">D</mi><mi mathvariant="normal">D</mi><mi mathvariant="normal">H</mi></mrow></msub><mo stretchy="false">(</mo><mi mathvariant="script">R</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mrow><mo fence="true">∣</mo><munder><mrow><mi>Pr</mi><mo>⁡</mo></mrow><mrow><mi mathvariant="normal">D</mi><mi mathvariant="normal">H</mi></mrow></munder><mo stretchy="false">[</mo><mi mathvariant="script">R</mi><mtext> outputs </mtext><mn>1</mn><mo stretchy="false">]</mo><mo>−</mo><munder><mrow><mi>Pr</mi><mo>⁡</mo></mrow><mrow><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">f</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">m</mi></mrow></munder><mo stretchy="false">[</mo><mi mathvariant="script">R</mi><mtext> outputs </mtext><mn>1</mn><mo stretchy="false">]</mo><mo fence="true">∣</mo></mrow></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mrow><mo fence="true">∣</mo><mi>Pr</mi><mo>⁡</mo><mo stretchy="false">[</mo><mover accent="true"><mi>b</mi><mo stretchy="true">^</mo></mover><mo>=</mo><mi>b</mi><mtext> in the real game</mtext><mo stretchy="false">]</mo><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo fence="true">∣</mo></mrow></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><msub><mrow><mi mathvariant="normal">Adv</mi><mo>⁡</mo></mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">N</mi><mi mathvariant="normal">D</mi><mtext>-</mtext><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">A</mi></mrow></msub><mo stretchy="false">(</mo><mi mathvariant="script">A</mi><mo stretchy="false">)</mo><mi mathvariant="normal">.</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+\operatorname{Adv}_{\mathrm{DDH}}(\mathcal R)
+&amp;= \left|\Pr_{\mathrm{DH}}[\mathcal R\text{ outputs }1]
+       -\Pr_{\mathrm{uniform}}[\mathcal R\text{ outputs }1]\right| \\
+&amp;= \left|\Pr[\widehat b=b\text{ in the real game}]-\frac12\right| \\
+&amp;= \operatorname{Adv}_{\mathrm{IND\text{-}CPA}}(\mathcal A).
+\end{aligned}
+</annotation></semantics></math></span></p>
+<p>The reduction runs the attacker once and does a small amount of extra work, so it is efficient whenever the attacker is. If the attacker had non-negligible advantage, the reduction would have the same advantage against DDH. Therefore, ElGamal is IND-CPA secure under the DDH assumption.</p>
+<h2 id="what-changed-between-the-games">What Changed Between the Games?</h2>
+<p>Replacing the mask was a <strong>game hop</strong>. To justify the hop, we asked what would happen if the attacker's win probability changed by a noticeable amount. The reduction could use that change to distinguish the two DDH distributions, just by checking whether the attacker won. In a longer proof, we might make several hops and bound how much the win probability can change at each step.</p>
+<p><em>Note:</em> AI used for polishing text and finding bugs.</p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/26-11-21/book1/">Book: Vimukta</a></li>
+</ul>
+
+			</heading-anchors>
+		</main>
+
+		<!-- This page `/blog/26-11-22/security2/` was built on 2026-11-22T23:50:26.639Z -->
+		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
+	</body>
+</html>
