@@ -23,6 +23,11 @@ Suppose Alice wants to send Bob a private message. In **public-key encryption**,
 
 Anyone who has Bob's public key can send him an encrypted message, including someone who has never talked to Bob before. An eavesdropper can have the very same public key and see the ciphertext. What should it mean for Alice's message to stay private in that situation?
 
+<figure style="width: 400px; max-width: 100%; margin: 1.5rem auto; text-align: center;">
+  <img src="graffiti.jpeg" alt="Tomato photo." style="display: block; width: 100%; height: auto;">
+  <figcaption style="margin-top: 0.5rem; font-size: 0.875em; font-style: italic;">A grafitti about hope by anonymous lab member. Hope all your security proofs go through.</figcaption>
+</figure>
+
 ## The Security Game
 
 A **security game** is an experiment between an attacker and a challenger. The challenger runs the experiment and keeps track of the secrets. The rules specify what the attacker sees, what it can do, and what counts as winning.
