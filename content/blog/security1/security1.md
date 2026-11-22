@@ -311,6 +311,6 @@ When reading a reduction proof, keep four questions in mind:
 3. How does the reduction turn the attacker into a solver without knowing the hidden solution itself?
 4. What running time and success probability does the solver achieve?
 
-For our Diffie–Hellman example, each answer is short enough to check directly. These same questions will guide us when we introduce formal security games and prove properties of more involved constructions.
+For our Diffie–Hellman example, each answer is short enough to check directly. In [Part 2](/blog/26-11-22/security2/), we use these same questions to introduce formal security games and prove that ElGamal hides which message was encrypted.
 
 _Note:_ AI used for polishing text and finding bugs.
