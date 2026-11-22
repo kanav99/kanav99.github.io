@@ -173,11 +173,11 @@
   </entry>
   <entry>
     <title>Security Proofs #1: Motivation and Preliminaries</title>
-    <link href="https://kanav99.github.io/blog/security1/" />
+    <link href="https://kanav99.github.io/blog/26-06-14/security1/" />
     <updated>2026-06-14T00:00:00Z</updated>
-    <id>https://kanav99.github.io/blog/security1/</id>
-    <media:content url="https://kanav99.github.io/blog/security1/76WLh_Z--0-768.jpeg" medium="image" isDefault="true" />
-    <media:thumbnail url="https://kanav99.github.io/blog/security1/76WLh_Z--0-768.jpeg" />
+    <id>https://kanav99.github.io/blog/26-06-14/security1/</id>
+    <media:content url="https://kanav99.github.io/blog/26-06-14/security1/76WLh_Z--0-768.jpeg" medium="image" isDefault="true" />
+    <media:thumbnail url="https://kanav99.github.io/blog/26-06-14/security1/76WLh_Z--0-768.jpeg" />
     <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;You might already know what encryption, digital signatures, or homomorphic encryption do. But what does it mean to say that one of these constructions is &lt;em&gt;secure&lt;/em&gt;? Secure against whom? What counts as a successful attack? And how can we prove something about attacks nobody has thought of yet?&lt;/p&gt;
 &lt;p&gt;A security proof starts by making those questions precise. We specify what an attacker can do and what it means for the attacker to win. Then we show that an attacker who wins too often would give us an algorithm for a problem we assume is hard.&lt;/p&gt;
@@ -202,7 +202,7 @@
 &lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;These two implications are logically equivalent. If &lt;span class=&quot;katex&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;P&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt; guarantees &lt;span class=&quot;katex&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;Q&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;Q&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;, then &lt;span class=&quot;katex&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;Q&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;Q&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt; being false rules out &lt;span class=&quot;katex&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;P&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt; being true.&lt;/p&gt;
 &lt;figure style=&quot;width: 400px; max-width: 100%; margin: 1.5rem auto; text-align: center;&quot;&gt;
-  &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://kanav99.github.io/blog/security1/76WLh_Z--0-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://kanav99.github.io/blog/security1/76WLh_Z--0-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://kanav99.github.io/blog/security1/76WLh_Z--0-768.jpeg&quot; alt=&quot;Tomato photo.&quot; style=&quot;display: block; width: 100%; height: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
+  &lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://kanav99.github.io/blog/26-06-14/security1/76WLh_Z--0-768.avif 768w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://kanav99.github.io/blog/26-06-14/security1/76WLh_Z--0-768.webp 768w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://kanav99.github.io/blog/26-06-14/security1/76WLh_Z--0-768.jpeg&quot; alt=&quot;Tomato photo.&quot; style=&quot;display: block; width: 100%; height: auto;&quot; width=&quot;768&quot; height=&quot;1024&quot;&gt;&lt;/picture&gt;
   &lt;figcaption style=&quot;margin-top: 0.5rem; font-size: 0.875em; font-style: italic;&quot;&gt;&lt;small&gt;&lt;em&gt;Existence of tomato implies existence of tomato sauce&lt;/em&gt;&lt;/small&gt;&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;p&gt;In our divisibility example, the contrapositive says that if &lt;span class=&quot;katex&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;n&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt; is not even, then it is not divisible by four. This follows from the original statement; the converse does not.&lt;/p&gt;
@@ -360,9 +360,9 @@
   </entry>
   <entry>
     <title>This is my first post.</title>
-    <link href="https://kanav99.github.io/blog/firstpost/" />
+    <link href="https://kanav99.github.io/blog/25-11-27/firstpost/" />
     <updated>2025-11-27T00:00:00Z</updated>
-    <id>https://kanav99.github.io/blog/firstpost/</id>
+    <id>https://kanav99.github.io/blog/25-11-27/firstpost/</id>
     <media:content url="https://kanav99.github.io/images/feed-photo.jpeg" medium="image" isDefault="true" />
     <media:thumbnail url="https://kanav99.github.io/images/feed-photo.jpeg" />
     <content type="html">&lt;p&gt;&lt;img src=&quot;https://kanav99.github.io/images/feed-photo.jpeg&quot; alt=&quot;Pongo sleeping on the couch&quot;&gt;&lt;/p&gt;&lt;p&gt;Hello, this is my first blog post!&lt;/p&gt;
