@@ -62,6 +62,11 @@ We use the same setting as in Part 1. Let $G=\langle g\rangle$ be a cyclic group
 
 The last step works because $Y^x=(g^r)^x=(g^x)^r=X^r$. This is the same equality that gave us correctness for Diffie–Hellman. Here the shared value masks the message, and Alice's fresh exponent gives her a fresh mask for each encryption.
 
+<figure style="width: 400px; max-width: 100%; margin: 1.5rem auto; text-align: center;">
+  <img src="acheivement.png" alt="Tomato photo." style="display: block; width: 100%; height: auto;">
+  <figcaption style="margin-top: 0.5rem; font-size: 0.875em; font-style: italic;">My most important academic achievement in recent time: may the 4s be with me.</figcaption>
+</figure>
+
 ## The Assumption
 
 The **decisional Diffie–Hellman (DDH) assumption** concerns two ways of sampling a tuple:
