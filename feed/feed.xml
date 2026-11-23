@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="pretty-atom-feed.xsl" type="text/xsl"?>
 <feed xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-  <title>Kanav&#39;s Personal Page</title>
+  <title>Kanav&#39;s Blog</title>
   <subtitle>anti- random oracle model propaganda</subtitle>
   <logo>https://kanav99.github.io/images/feed-photo.jpeg</logo>
   <icon>https://kanav99.github.io/images/feed-photo.jpeg</icon>
